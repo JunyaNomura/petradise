@@ -5,5 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :pets
   has_many :ratings
-  validates :first_name, :last_name, :location, presence: true
+  # validates :first_name, :last_name, :location, presence: true
 end
