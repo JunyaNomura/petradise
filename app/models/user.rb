@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_one :pet
   has_many :ratings
+  has_one_attached :photo
   has_friendship
   # validates :first_name, :last_name, :location, presence: true
   # exclude friend pets - current_user.friends
