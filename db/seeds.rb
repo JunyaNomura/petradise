@@ -6,10 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
-Pet.destroy_all
 Rating.destroy_all
+Pet.destroy_all
 User.destroy_all
-
+puts "creating users"
 15.times do
   User.create!(
     first_name: Faker::Name.unique.first_name ,
@@ -19,40 +19,26 @@ User.destroy_all
     password: "123456"
     )
 end
-
+puts "done"
+puts "Creating Pets and ratings"
 User.find_each do |user|
-  15.times do
-      Pet.create!(
+  1.times do
+      pet = Pet.create!(
       name: Faker::Name.unique.first_name,
       user: user,
-      gender: "male" ,
+      gender: ["male", "female"].sample,
       age: rand(0..18),
-      breed: Faker::Nation.capital_city,
+      breed: Faker::Creature::Dog.breed,
       description: Faker::Internet.email
       )
+      rand(1..3).times do
+        Rating.create!(
+         stars: rand(0..5),
+         comments: Faker::Quote.famous_last_words,
+         user: user,
+         pet: pet
+         )
+      end
   end
 end
-
-# Pet.find_each do |pet|
-#   15.times do
-#     Pet.create!(
-#       name: Faker::Name.unique.first_name,
-#       user: user,
-#       gender: "male" ,
-#       age: rand(0..18),
-#       breed: Faker::Nation.capital_city,
-#       description: Faker::Internet.email
-#     )
-#   end
-# end
-Pet.find_each do |pet|
-  15.times do
-    Rating.create!(
-
-     stars: rand(0..5),
-     comments: Faker::Name.unique.last_name,
-     user: user,
-     pet: pet
-     )
-  end
-end
+puts "Finished"

@@ -8,6 +8,8 @@
         <%= f.input :breed, label: "Please add you pet breed", hint: "Husky, Pomerania, Buldog" %>
         <%= f.input :description, label: "Please add any aditional information", hint: "my dog is allergic to peanuts", input_html: { maxlength: 120 }%>
         <%= f.input :photo, as: :file %>
+        <%= f.input :personality_list, label: "Add tags", hint: "Add your tags, separated by commas" %>
+        <%= f.input :preference_list, label: "Add tags", hint: "Add your tags, separated by commas" %>
         <%= f.submit "Create", class: "btn btn-primary" %>
       <% end %>
     </div>

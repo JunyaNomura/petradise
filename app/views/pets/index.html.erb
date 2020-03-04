@@ -1,7 +1,9 @@
 <p>index</p>
-<%@pets.each do |pet|%>
+<% @pets.each do |pet|%>
   <%= pet.name %>
   <%= link_to "show", pet_path(pet)%>
   <%= link_to "edit", edit_pet_path(pet)  %>
+  <p><%= current_user.pet.compatibilty(pet) %></p>
 <% end %>
 <%= link_to "create", new_pet_path %>
+
