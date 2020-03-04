@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2020_03_04_014956) do
   end
 
   create_table "ratings", force: :cascade do |t|
-    t.integer "stars", default: 5
+    t.integer "stars"
     t.text "comments"
     t.bigint "pet_id"
     t.bigint "user_id"
