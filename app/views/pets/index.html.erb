@@ -1,0 +1,7 @@
+<p>index</p>
+<%@pets.each do |pet|%>
+  <%= pet.name %>
+  <%= link_to "show", pet_path(pet)%>
+  <%= link_to "edit", edit_pet_path(pet)  %>
+<% end %>
+<%= link_to "create", new_pet_path %>
