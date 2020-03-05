@@ -9,9 +9,13 @@ require 'faker'
 Rating.destroy_all
 Pet.destroy_all
 User.destroy_all
+# <<<<<<< HEAD
+# puts "creating users"
+# =======
 
 
 puts "creating users"
+
 
 15.times do
   User.create!(
@@ -22,21 +26,27 @@ puts "creating users"
     password: "123456"
     )
 end
+# <<<<<<< HEAD
+# puts "done"
+# puts "Creating Pets and ratings"
+# User.find_each do |user|
+#   1.times do
+#       pet = Pet.create!(
+# =======
 
 puts "done"
 puts "Creating Pets and ratings"
 
 User.find_each do |user|
   rand(1..3).times do
-      p = Pet.new(
+      p = Pet.create!(
       name: Faker::Name.unique.first_name,
       user: user,
       gender: ["male", "female"].sample,
       age: rand(0..18),
-      breed: Faker::Nation.capital_city,
+      breed: Faker::Creature::Dog.breed,
       description: Faker::Internet.email
       )
-
       rand(1..3).times do
         Rating.create!(
 
