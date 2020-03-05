@@ -1,0 +1,71 @@
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <%= link_to "My Matches", '#match', class: "nav-link active", id: "match-tab", 'data-toggle': "tab", role: "tab", 'aria-controls': "matches", 'aria-selected': "true"  %>
+  </li>
+
+  <li class="nav-item">
+    <%= link_to "Add or Edit a Pet", '#create', class: "nav-link", id: "create-tab", 'data-toggle': "tab", role: "tab", 'aria-controls': "create", 'aria-selected': "false"  %>
+  </li>
+
+  <!-- <li class="nav-item">
+    <%#= link_to "Edit your pet", '#edit', class: "nav-link", id: "edit-tab", 'data-toggle': "tab", role: "tab", 'aria-controls': "edit", 'aria-selected': "false"  %>
+  </li> -->
+
+  <li class="nav-item">
+    <%= link_to "Edit Profile", '#edit', class: "nav-link", id: "edit-tab", 'data-toggle': "tab", role: "tab", 'aria-controls': "edit", 'aria-selected': "false"  %>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="match" role="tabpanel" aria-labelledby="matches-tab">
+    <div class="cards">
+      <% @friends.each do |friend| %>
+        <div class="card-dog-big">
+          <div class="card-dog">
+            <div class="card-dog-dphoto">
+              <%= cl_image_tag("my_pet", class: "avatar-pet") %>
+            </div>
+            <div class="pet-info">
+              <h5> <%= friend.pet.name %> </h5>
+              <p> <%= friend.pet.breed %></p>
+            </div>
+            <div class="card-dog-info">
+              <div class="card-dog-info-inside">
+                <span><%= friend.pet.age %></span>
+              </div>
+              <div class="card-dog-info-inside">
+                <% if friend.pet.gender = "male" %>
+                  <i class="fas fa-mars"></i>
+                <% else %>
+                  <i class="fas fa-venus"></i>
+                <% end %>
+              </div>
+            </div>
+            <div class="card-dog-user">
+              <%= cl_image_tag("antonio", class: "avatar-bordered") %>
+              <div class="card-dog-user-info">
+                <p>Owner</p>
+                <p><strong> <%= friend.first_name %></strong></p>
+              </div>
+                <%= link_to reject_path(friend), class: "remove" do%>
+                  <i class="fas fa-user-slash"></i>
+                <% end %>
+            </div>
+            <div class="tab-button-chat">
+              <%= link_to "Chat", root_path, class: "btn btn-primary"  %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="tab-pane fade" id="create" role="tabpanel" aria-labelledby="create-tab">
+    <%= render "pets/form" %>
+  </div>
+  <!-- <div class="tab-pane fade" id="edit" role="tabpanel" aria-labelledby="edit-tab">
+  <p>edit</p>
+  </div> -->
+  <div class="tab-pane fade" id="edit" role="tabpanel" aria-labelledby="edit-tab">
+    <%#= render "devise/registration/form" %>
+
+</div>
+
