@@ -1,6 +1,13 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-xs-12 col-sm-8">
+    <div class="col-xs-12 col-sm-8" id="pet-owner">
+      <%= simple_form_for @user do |f| %>
+        <%= f.input :first_name, label: "Please add you first name", hint: "John, Baily, Max" %>
+        <%= f.input :last_name, label: "Please add you last name", hint: "Doe, Smith" %>
+        <%= f.input :location, label: "Please add your location", hint: "Tokyo, Osaka, Nagoya" %>
+      <% end %>
+    </div>
+    <div class="col-xs-12 col-sm-8" id="pet-dog">
       <%= simple_form_for @pet do |f| %>
         <%= f.input :name, label: "Please add you pet name", hint: "Jack, Baily, Max" %>
         <%= f.input :gender, label: "Please add you dog gender", collection: Pet::GENDER %>
