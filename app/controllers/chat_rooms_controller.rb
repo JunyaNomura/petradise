@@ -1,8 +1,4 @@
 class ChatRoomsController < ApplicationController
-  # def show
-  #   @room = ChatRoom.includes(messages: :user).find(params[:id])
-  # end
-
   def create
     @room = ChatRoom.new(permitted_parameters)
 
@@ -15,14 +11,14 @@ class ChatRoomsController < ApplicationController
   end
 
   def show
-    @room = ChatRoom.find(params[:id])
-    @room_message = Message.new(chat_room: @room)
-    @room_messages = @room.messages.includes(:user)
+    # @chat_room = ChatRoom.includes(messages: :user).find(params[:id])
+    @chat_room = ChatRoom.find(params[:id])
+    # @room_message = Message.new(chat_room: @room)
+    @room_messages = @chat_room.messages.includes(:user)
   end
 
 
   private
-
 
   def permitted_parameters
     params.require(:chat_room).permit(:name)
