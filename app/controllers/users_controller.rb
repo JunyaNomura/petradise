@@ -27,10 +27,17 @@ class UsersController < ApplicationController
   # end
 
   def my_page
-    @pet = Pet.new
-    @pet = current_user.pet
+    # @user = User.new
+    @pet = current_user.pet || Pet.new
     @friends = current_user.friends.sort_by do |friend|
       friend.friendships.find_by(friend: current_user).updated_at
     end.reverse
+    @users = current_user.friends.geocoded
+    @markers = @users.map do |user|
+      {
+        lat: user.latitude,
+        lng: user.longitude
+      }
+    end
   end
 end

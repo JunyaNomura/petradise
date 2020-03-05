@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
   resources :matches, only: [:index, :show]
   get 'my_page', to: 'users#my_page', as: :my_page
+  get 'map', to: 'users#map', as: :map
   get 'users/:id/request', to: 'users#friend_request', as: :request
   get 'users/:id/accept', to: 'users#friend_accept', as: :accept
   get 'users/:id/reject', to: 'users#friend_reject', as: :reject

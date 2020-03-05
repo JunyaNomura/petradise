@@ -23,7 +23,7 @@ class PetsController < ApplicationController
     @pet = Pet.new(pet_params)
     @pet.user = current_user
     if @pet.save
-      redirect_to pets_path
+      redirect_to my_page_path
     else
       render :new
     end
@@ -34,7 +34,7 @@ class PetsController < ApplicationController
 
   def update
     if @pet.update(pet_params)
-      redirect_to pets_path
+      redirect_to my_page_path
     else
       render :edit
     end
