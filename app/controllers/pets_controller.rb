@@ -1,7 +1,8 @@
 class PetsController < ApplicationController
   before_action :set_pet, only: [:show, :edit, :update, :delete]
+
   def index
-    @pets = Pet.all
+    @pets = Pet.where.not(user: current_user.excluded_friends, id: current_user.pet)
   end
 
   def show
@@ -43,7 +44,6 @@ class PetsController < ApplicationController
     redirect_to pets_path
   end
 
-
   private
 
   def set_pet
@@ -53,4 +53,5 @@ class PetsController < ApplicationController
   def pet_params
     params.require(:pet).permit(:name, :gender, :age, :breed, :description, :photo, :personality_list, :preference_list)
   end
+
 end
