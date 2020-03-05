@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_one :pet
   has_many :ratings
+  has_many :messages, dependent: :destroy
+  has_many :chat_rooms, source: :chat_rooms, foreign_key: [:user_one, :user_two]
   has_one_attached :photo
   has_friendship
   # validates :first_name, :last_name, :location, presence: true
@@ -15,5 +17,9 @@ class User < ApplicationRecord
 
   def excluded_friends
     pending_friends + blocked_friends + friends
+  end
+
+  def on_friendship_accepted(friendship)
+    ChatRoom.create(user_one: friendship.friendable, user_two: friendship.friend)
   end
 end
