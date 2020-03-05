@@ -18,4 +18,19 @@ class UsersController < ApplicationController
     target_user.block_friend(current_user)
     redirect_to pets_path
   end
+
+  # def friend_remove
+  #   target_user = User.find(params[:id])
+  #   target_user.decline_request(current_user)
+  #   # target_user.block_friend(current_user)
+  #   redirect_to pets_path
+  # end
+
+  def my_page
+    @pet = Pet.new
+    @pet = current_user.pet
+    @friends = current_user.friends.sort_by do |friend|
+      friend.friendships.find_by(friend: current_user).updated_at
+    end.reverse
+  end
 end

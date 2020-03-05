@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   get 'users/:id/request', to: 'users#friend_request', as: :request
   get 'users/:id/accept', to: 'users#friend_accept', as: :accept
   get 'users/:id/reject', to: 'users#friend_reject', as: :reject
+  get 'users/:id/remove', to: 'users#friend_remove', as: :remove
+
 end
