@@ -6,10 +6,10 @@ class PetsController < ApplicationController
   end
 
   def show
-    pet_first_personality(current_user.pet.personality_list)
-    pet_second_personality(current_user.pet.personality_list)
-    pet_first_preference(current_user.pet.preference_list)
-    pet_second_preference(current_user.pet.preference_list)
+    # pet_first_personality(current_user.pet.personality_list)
+    # pet_second_personality(current_user.pet.personality_list)
+    # pet_first_preference(current_user.pet.preference_list)
+    # pet_second_preference(current_user.pet.preference_list)
   end
     # @related_pets = @pet.find_related_personalities
 
@@ -52,7 +52,7 @@ class PetsController < ApplicationController
   end
 
   def pet_params
-    params.require(:pet).permit(:name, :gender, :age, :breed, :description, :photo, :personality_list, :preference_list)
+    params.require(:pet).permit(:name, :gender, :age, :breed, :description, :photo, preference_list: [], personality_list: [] )
   end
 
 end
