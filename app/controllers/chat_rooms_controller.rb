@@ -8,13 +8,14 @@ class ChatRoomsController < ApplicationController
 
     if @room.save
       flash[:success] = "Room #{@room.name} was created successfully"
-      # redirect_to rooms_path
+      redirect_to chat_room_path(@room)
     else
       render :new
     end
   end
 
   def show
+    @room = ChatRoom.find(params[:id])
     @room_message = Message.new(chat_room: @room)
     @room_messages = @room.messages.includes(:user)
   end
