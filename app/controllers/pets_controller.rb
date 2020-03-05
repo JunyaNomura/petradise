@@ -16,6 +16,7 @@ class PetsController < ApplicationController
 
   def new
     @pet = Pet.new
+    # @user = User.new
   end
 
   def create
