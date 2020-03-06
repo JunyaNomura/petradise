@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-# <<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2020_03_04_035028) do
-# =======
-# ActiveRecord::Schema.define(version: 2020_03_04_014956) do
-# >>>>>>> 2f755a1eef98b77d4fb49020dc9d609c4e299663
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,7 +60,7 @@ ActiveRecord::Schema.define(version: 2020_03_04_035028) do
   end
 
   create_table "ratings", force: :cascade do |t|
-    t.integer "stars", default: 5
+    t.integer "stars"
     t.text "comments"
     t.bigint "pet_id"
     t.bigint "user_id"
