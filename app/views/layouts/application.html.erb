@@ -23,6 +23,8 @@
 
     <script src="https://unpkg.com/swiper/js/swiper.js"></script>
     <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
+    <%= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
+
   </head>
   <body>
     <%= render 'shared/navbar' %>
@@ -31,5 +33,9 @@
 
     <%= javascript_pack_tag 'application' %>
 
+
+
+    <%= yield :after_js %>
+              
   </body>
 </html>

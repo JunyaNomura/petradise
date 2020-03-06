@@ -1,0 +1,18 @@
+<% if @message.errors.any? %>
+  // validation erros
+<% else %>
+  var messages = document.querySelector('.messages');
+  messages.insertAdjacentHTML('beforeend', '<%= j render "message", message: @message, user_is_messages_author: true %>');
+  var input = document.querySelector('#message_content');
+  input.value = '';
+  input.blur();
+  scrollLastMessageIntoView();
+<% end %>
+// document.querySelector('#new_message').addEventListener("keydown", event => {
+//   console.log(event.keyCode)
+
+//   if (event.keyCode == 13) {
+//     console.log('enter')
+
+//   }
+// });
