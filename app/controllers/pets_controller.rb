@@ -3,6 +3,7 @@ class PetsController < ApplicationController
 
   def index
     @pets = Pet.where.not(user: current_user.excluded_friends, id: current_user.pet)
+    @pet = Pet.where.not(user: current_user.excluded_friends, id: current_user.pet).first
   end
 
   def show

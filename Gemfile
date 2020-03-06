@@ -20,7 +20,13 @@ gem 'acts-as-taggable-on', '~> 6.0'
 gem 'cloudinary', '~> 1.12.0'
 gem 'has_friendship'
 
+gem 'carrierwave', '~> 2.0'
+gem 'jquery-rails'
+gem 'swiper-rails'
+gem 'redis'
+
 gem 'geocoder'
+
 
 group :development do
   gem 'web-console', '>= 3.3.0'
@@ -34,3 +40,4 @@ group :development, :test do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'dotenv-rails'
 end
+
