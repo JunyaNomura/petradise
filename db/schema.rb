@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2020_03_05_085243) do
 
   # These are extensions that must be enabled in order to support this database
@@ -36,6 +37,16 @@ ActiveRecord::Schema.define(version: 2020_03_05_085243) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "chat_rooms", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_one_id"
+    t.bigint "user_two_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_one_id"], name: "index_chat_rooms_on_user_one_id"
+    t.index ["user_two_id"], name: "index_chat_rooms_on_user_two_id"
+  end
+
   create_table "friendships", id: :serial, force: :cascade do |t|
     t.string "friendable_type"
     t.integer "friendable_id"
@@ -45,6 +56,16 @@ ActiveRecord::Schema.define(version: 2020_03_05_085243) do
     t.integer "blocker_id"
     t.integer "status"
     t.index ["friendable_id", "friend_id"], name: "index_friendships_on_friendable_id_and_friend_id", unique: true
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.bigint "chat_room_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chat_room_id"], name: "index_messages_on_chat_room_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "pets", force: :cascade do |t|
@@ -60,7 +81,7 @@ ActiveRecord::Schema.define(version: 2020_03_05_085243) do
   end
 
   create_table "ratings", force: :cascade do |t|
-    t.integer "stars", default: 5
+    t.integer "stars"
     t.text "comments"
     t.bigint "pet_id"
     t.bigint "user_id"
@@ -115,6 +136,10 @@ ActiveRecord::Schema.define(version: 2020_03_05_085243) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "chat_rooms", "users", column: "user_one_id"
+  add_foreign_key "chat_rooms", "users", column: "user_two_id"
+  add_foreign_key "messages", "chat_rooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "pets", "users"
   add_foreign_key "ratings", "pets"
   add_foreign_key "ratings", "users"

@@ -1,3 +1,7 @@
+
+<div class="swiper-container">
+  <div class="swiper-wrapper">
+
 <p>index</p>
 
 
@@ -59,6 +63,43 @@
   <% end %>
 </div>
 
+<script>
+  var mySwiper = new Swiper('.swiper-container', {
+    init: false,
+    speed: 700,
+    loop: true,
+    spaceBetween: 100,
+    autoHeight: true, //enable auto height
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    on: {
+      init: function () {
+        console.log('swiper initialized');
+      },
+      slideChange: () => {
+        if ( mySwiper.activeIndex > mySwiper.previousIndex ) {
+          console.log('swipe to the left');
+          const s = document.querySelector(`[data-swiper-slide-index='${mySwiper.activeIndex}']`);
+          window.location.href = "<%= reject_path(@pet.user) %>";
+        } else {
+          console.log('swipe to the right');
+          // document.getElementById('edit').click();
+          window.location.href = "<%= accept_path(@pet.user) %>";
+        }
+        console.log('active index', mySwiper.activeIndex);
+        console.log('prev index', mySwiper.previousIndex);
+      }
+    },
+  });
+
+  mySwiper.init();
+  // var mySwiper2 = document.querySelector('.swiper-container').swiper
 
 
-
+</script>

@@ -61,7 +61,7 @@
                   <% end %>
               </div>
               <div class="tab-button-chat">
-                <%= link_to "Chat", root_path, class: "btn btn-primary"  %>
+                <%= link_to "Chat", chat_room_url(current_user.chat_room_with(current_user)), class: "btn btn-primary"  %>
               </div>
             </div>
           </div>
