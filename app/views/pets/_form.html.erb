@@ -10,7 +10,7 @@
           <%= f.input :description, label: "Please add any aditional information", hint: "my dog is allergic to peanuts", input_html: { maxlength: 120 }%>
           <%= f.input :photo, as: :file %>
           <%= f.input :personality_list, as: :check_boxes, collection: ["Shy", "Active", "Confident", "Independent", "Happy", "Adaptable"] %>
-          <%= f.input :preference_list, as: :check_boxes, collection: ["Shy", "Active", "Confident", "Independent", "Happy", "Adaptable"] %>
+          <%= f.input :preference_list, as: :check_boxes, collection: ["Dogpark", "Running", "Relaxing", "Independent", "Dog Restaurant", "Adaptable"] %>
           <%#= f.input :personality_list, label: "Add tags", hint: "Add your tags, separated by commas" %>
           <%#= f.input :preference_list, label: "Add tags", hint: "Add your tags, separated by commas" %>
           <%= f.submit "Create", class: "btn btn-primary" %>
