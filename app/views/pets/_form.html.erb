@@ -1,15 +1,21 @@
 <div class="container">
-  <div class="row justify-content-center">
-    <div class="col-xs-12 col-sm-8">
-      <%= simple_form_for @pet do |f| %>
-        <%= f.input :name, label: "Please add you pet name", hint: "Jack, Baily, Max" %>
-        <%= f.input :gender, label: "Please add you dog gender", collection: Pet::GENDER %>
-        <%= f.input :age, label: "Please add you pet age", input_html: { type: 'number' } %>
-        <%= f.input :breed, label: "Please add you pet breed", hint: "Husky, Pomerania, Buldog" %>
-        <%= f.input :description, label: "Please add any aditional information", hint: "my dog is allergic to peanuts", input_html: { maxlength: 120 }%>
-        <%= f.input :photo, as: :file %>
-        <%= f.submit "Create", class: "btn btn-primary" %>
-      <% end %>
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 offset-sm-4" id="pet-dog">
+      <div class="form-pet">
+        <%= simple_form_for @pet do |f| %>
+          <%= f.input :name, label: "Please add you pet name", hint: "Jack, Baily, Max" %>
+          <%= f.input :gender, label: "Please add you dog gender", collection: Pet::GENDER %>
+          <%= f.input :age, label: "Please add you pet age", input_html: { type: 'number' } %>
+          <%= f.input :breed, label: "Please add you pet breed", hint: "Husky, Pomerania, Buldog" %>
+          <%= f.input :description, label: "Please add any aditional information", hint: "my dog is allergic to peanuts", input_html: { maxlength: 120 }%>
+          <%= f.input :photo, as: :file %>
+          <%= f.input :personality_list, as: :check_boxes, collection: ["Shy", "Active", "Confident", "Independent", "Happy", "Adaptable"] %>
+          <%= f.input :preference_list, as: :check_boxes, collection: ["Dogpark", "Running", "Relaxing", "Independent", "Dog Restaurant", "Adaptable"] %>
+          <%#= f.input :personality_list, label: "Add tags", hint: "Add your tags, separated by commas" %>
+          <%#= f.input :preference_list, label: "Add tags", hint: "Add your tags, separated by commas" %>
+          <%= f.submit "Create", class: "btn btn-primary" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

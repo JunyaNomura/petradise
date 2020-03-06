@@ -15,9 +15,13 @@ gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+gem 'acts-as-taggable-on', '~> 6.0'
+
 gem 'cloudinary', '~> 1.12.0'
 gem 'has_friendship'
 gem 'redis'
+
+gem 'geocoder'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

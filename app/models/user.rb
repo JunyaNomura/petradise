@@ -9,6 +9,8 @@ class User < ApplicationRecord
   # has_many :chat_rooms, source: :chat_rooms, foreign_key: [:user_one, :user_two]
   has_one_attached :photo
   has_friendship
+  geocoded_by :location
+  after_validation :geocode, if: :will_save_change_to_location?
   # validates :first_name, :last_name, :location, presence: true
   # exclude friend pets - current_user.friends
   # my pet - current_user.pet

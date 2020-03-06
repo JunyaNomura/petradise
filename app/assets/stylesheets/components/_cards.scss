@@ -1,0 +1,157 @@
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+  padding: 32px;
+
+    .card-category {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      border-radius: 8px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+      background: $navbar-orange;
+      opacity: 0.7;
+        .tab-avatar-friend {
+          position: absolute;
+          top: -25px;
+          left: -25px;
+        }
+        .tab-avatar-pet {
+          position: absolute;
+          top: -20px;
+          left: 70px;
+        }
+        .tab-button-reject {
+          position: absolute;
+          top: 0px;
+          left: 175px;
+        }
+        .tab-button-chat {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          align-items: center;
+          width: 100%;
+          height: 100%;
+          padding-bottom: 8px;
+
+            span {
+              padding-bottom: 16px;
+            }
+        }
+    }
+}
+
+.card-dog-big {
+  background: $white;
+  width: 170px;
+  height: 300px;
+  border-radius: 12px;
+  padding: 8px;
+  .card-dog {
+    background: $white-card;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    .card-dog-user {
+      display: flex;
+    /* justify-content: space-between; */
+      align-items: center;
+      background: $white;
+      border-radius: 4px;
+      height: 35px;
+      width: 80%;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+      // margin-top: 8px;
+      margin: 0 auto;
+      .card-dog-user-info {
+        width: 100%;
+        margin-left: 8px;
+
+      }
+        p {
+          font-size: 8px;
+        }
+    }
+      h5 {
+        margin: 0;
+      }
+      p {
+        margin: 0;
+      }
+      .card-dog-dphoto {
+        height: 40%;
+        .avatar-pet {
+          width: 100%;
+          height: 100%;
+          border-radius: 16px 16px 0 0;
+          object-fit: cover;
+        }
+      }
+  }
+}
+
+.remove {
+  margin-right: 8px;
+  color: $navbar-orange;
+}
+
+.tab-button-chat {
+  text-align: center;
+  margin-top: 8px;
+}
+.card-dog-info {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 8px;
+}
+.card-dog-info-inside {
+  background: $white;
+  height: 30px;
+  width: 40px;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  text-align: center;
+  color: $navbar-orange;
+}
+
+.pet-info {
+  padding-left: 18px;
+}
+
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}

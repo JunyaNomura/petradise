@@ -5,6 +5,26 @@ class Pet < ApplicationRecord
   validates :age, numericality: {only_integer: true}
   validates :description, length: {maximum: 120}
   has_one_attached :photo
+  acts_as_taggable_on :personalities, :preferences
   GENDER = ["Male", "Female"]
   PERSONALITY = ["Shy", "Active", "Confident", "Independent", "Happy", "Adaptable"]
-end
+  PREFERNECE = ["Shy", "Active", "Confident", "Independent", "Happy", "Adaptable"]
+
+  def compatibilty(pet_second)
+    number = personality_list.count do |pers|
+      pet_second.personality_list.include?(pers)
+    end
+    return 0 if personality_list.count.zero?
+
+    percentage = number / personality_list.count.to_f
+    percentage > 1 ? 1 : percentage.round(2)
+    # if personality_list && current_user.pet.preference_list include?
+    #   return 1
+    # elsif current_user.pet.personality_list || current_user.pet.preference_list include?
+    #   return 0.5
+    # else
+    #   return 0
+    # end
+
+  end
+ end

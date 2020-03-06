@@ -1,4 +1,13 @@
 <p>index</p>
+
+<% @pets.each do |pet|%>
+  <%= pet.name %>
+  <%= link_to "show", pet_path(pet)%>
+  <%= link_to "edit", edit_pet_path(pet)  %>
+  <p><%= current_user.pet.compatibilty(pet) %></p>
+<% end %>
+<%= link_to "create", new_pet_path %>
+
 <%@pets.each do |pet|%>
   <p><%= pet.name %></p>
   <p><%= link_to "show", pet_path(pet)%></p>
@@ -10,6 +19,7 @@
     <p><%= link_to "request", request_path(pet.user)  %></p>
   <% end %>
 <% end %>
+
 
 
 
