@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def friend_accept
     target_user = User.find(params[:id])
-    if target_user.requested_friends.include?(current_user)
+    if target_user.pending_friends.include?(current_user)
       current_user.accept_request(target_user)
     else
       current_user.friend_request(target_user)
