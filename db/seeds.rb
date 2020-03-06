@@ -84,7 +84,7 @@ User.all.each_with_index do |user, index|
       gender: ["male", "female"].sample,
       age: rand(0..18),
       breed: Faker::Creature::Dog.breed,
-      description: Faker::Internet.email
+      description: Faker::Quotes::Shakespeare.hamlet_quote
       )
     file = URI.open(url)
     pet.photo.attach(io: file, filename: "person_#{number}.jpg", content_type: 'image/jpg')
