@@ -11,8 +11,7 @@ class UsersController < ApplicationController
     target_user.accept_request(current_user)
     #should create and redirect to chat?
     #redirect_to pets_path
-    @room = target_user.chat_room_with(target_user)
-    redirect_to chat_room_url(@room)
+
   end
 
   def friend_reject
