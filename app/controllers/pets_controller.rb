@@ -2,7 +2,7 @@ class PetsController < ApplicationController
   before_action :set_pet, only: [:show, :edit, :update, :delete]
 
   def index
-    @pets = Pet.where.not(user: current_user.excluded_friends, id: current_user.pet)
+    @pets = Pet.where.not(user: current_user.excluded_friends, id: current_user.pet).order('name ASC')
     @pet = Pet.where.not(user: current_user.excluded_friends, id: current_user.pet).first
   end
 
