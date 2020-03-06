@@ -8,12 +8,12 @@ class UsersController < ApplicationController
 
   def friend_accept
     target_user = User.find(params[:id])
-    if target_user.requested_friends.include?(current_user)    
-      current_user.friend_request(target_user)
-    else
+    if target_user.requested_friends.include?(current_user)
       current_user.accept_request(target_user)
+    else
+      current_user.friend_request(target_user)
     end
-    redirect_to pets_path
+    # redirect_to pets_path
   end
 
   def friend_reject
