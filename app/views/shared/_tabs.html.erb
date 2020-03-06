@@ -39,7 +39,7 @@
                   <span><%= friend.pet.age %></span>
                 </div>
                 <div class="card-dog-info-inside">
-                  <% if friend.pet.gender = "male" %>
+                  <% if friend.pet.gender == "male" %>
                     <i class="fas fa-mars"></i>
                   <% else %>
                     <i class="fas fa-venus"></i>
@@ -56,12 +56,11 @@
                   <p>Owner</p>
                   <p><strong> <%= friend.first_name %></strong></p>
                 </div>
-                  <%= link_to reject_path(friend), class: "remove" do%>
-                    <i class="fas fa-user-slash"></i>
-                  <% end %>
+                  <i class="fas fa-user-slash btn reject" id="sweet-alert-demo"></i>
+                  <%= link_to "#", reject_path(friend), id: "block-friend" %>
               </div>
               <div class="tab-button-chat">
-                <%= link_to "Chat", root_path, class: "btn btn-primary"  %>
+                <%= link_to "Chat", chat_room_url(current_user.chat_room_with(current_user)), class: "btn btn-primary"  %>
               </div>
             </div>
           </div>

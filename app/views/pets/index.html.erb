@@ -1,25 +1,64 @@
+<div class="cards-category-index">
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
 
-<div class="swiper-container">
-  <div class="swiper-wrapper">
-    <% @pets.each do |pet| %>
-      <div class="swiper-slide" ><!--  id="pet_<%= pet.id %>" -->
-        <p><%= pet.name %></p>
-        <%= image_tag 'logo.png', width: 300 %>
-        <p><%= link_to "show", pet_path(pet)%></p>
-        <p><%= link_to "edit", edit_pet_path(pet), id:"edit"  %></p>
-        <% if current_user.requested_friends.include?(pet.user) %>
-          <p><%= link_to "add", accept_path(pet.user)  %></p>
-          <p><%= link_to "reject", reject_path(pet.user)  %></p>
-        <% else %>
-          <p><%= link_to "request", request_path(pet.user), id:"request"  %></p>
-        <% end %>
+      <%@pets.each do |pet|%>
+      <div class="swiper-slide" >
+        <div class="card-product">
+          <div class="card-product-picture-info">
+            <div class="card-product-picture w-100 d-flex justify-content-center">
+              <%= cl_image_tag(pet.photo.key, width: 300, height: 300, crop: :fill) %>
+            </div>
+            <div class="card-product-value">
+              <p><%= current_user.pet.compatibilty(pet) %>%</p>
+            </div>
+          </div>
+          <div class="second-half">
+            <div class="card-product-description">
+              <div class="card-product-title">
+                <p>Name:</p>
+                <p>   <%= pet.name %>  </p>
+              </div>
+              <div class="card-product-title ">
+                <p>Breed:</p>
+                <p><%= pet.breed %>  </p>
+              </div>
+              <div class="card-product-title">
+                <p>Age:</p>
+                <p>  <%= pet.age %></p>
+              </div>
+            </div>
+            <div class="card-product-type">
+              <div class="card-product-personality">
+                <p>Personality:</p>
+                <p><%= pet.personality_list %></p>
+              </div>
+              <div class="card-product-personality">
+                <p>Preferences:</p>
+                <p><%= pet.preference_list %></p>
+              </div>
+            </div>
+
+            <div class="card-product-div">
+              <div class="card-product-des">
+                <p>Description:</p>
+                <p> <%= pet.description %>  </p>
+              </div>
+            </div>
+          </div>
+          <%#= link_to "show", pet_path(pet)%>
+          <%#= link_to "edit", edit_pet_path(pet)  %>
+
+          <p><%= link_to "add", accept_path(pet.user), remote: true, id: "accept-link"  %></p>
+          <p><%= link_to "reject", reject_path(pet.user), remote: true, id: "accept-link"  %></p>
+        </div>
       </div>
-    <% end %>
-  </div>
+      <% end %>
+    </div>
     <div class="swiper-pagination"></div>
     <div class="swiper-button-prev"></div>
     <div class="swiper-button-next"></div>
-</div>
+  </div>
 
 
 <script>

@@ -43,6 +43,94 @@
     }
 }
 
+.card-product{
+    display: grid;
+  grid-gap: 16px;
+  margin: 16px;
+  width: 420px;
+  background: $white;
+  align-items: center;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 2px;
+}
+
+.card-product-picture{
+  position: abosolute;
+}
+
+.second-half {
+  background: #00A699;
+}
+
+.card-product-picture-info {
+  display: flex;
+  width: 100%;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.card-product-value {
+  top: 20px;
+  position: relative;
+  right: 30px;
+}
+
+
+.card-product-title {
+  display: flex;
+  flex-direction: column;
+  background: $white;
+    width: 100px;
+  height: 70px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    p {
+      margin: 0px;
+    }
+}
+
+
+.card-product-type {
+  display: flex;
+  padding: 30px;
+  justify-content: space-between;
+    /* align-items: center; */
+  text-align: center;
+}
+.card-product-personality {
+  display: flex;
+  flex-direction: column;
+      width: 80%;
+  height: 100px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  background-color: white;
+}
+
+.card-product-description {
+  display: flex;
+  padding: 30px;
+      justify-content: space-between;
+    /* align-items: center; */
+    text-align: center;
+
+}
+
+.card-product-des {
+  width: 80%;
+  height: 100px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  background-color: white;
+}
+.card-product-div{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+.cards-category-index {
+
+
+}
+
 .card-dog-big {
   background: $white;
   width: 170px;
@@ -68,6 +156,7 @@
       .card-dog-user-info {
         width: 100%;
         margin-left: 8px;
+        text-align: center;
 
       }
         p {
@@ -118,6 +207,9 @@
 
 .pet-info {
   padding-left: 18px;
+    p {
+      font-size: 12px;
+    }
 }
 
 
