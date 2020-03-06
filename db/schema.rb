@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2020_03_05_085243) do
 
   # These are extensions that must be enabled in order to support this database
@@ -81,7 +80,7 @@ ActiveRecord::Schema.define(version: 2020_03_05_085243) do
   end
 
   create_table "ratings", force: :cascade do |t|
-    t.integer "stars"
+    t.integer "stars", default: 5
     t.text "comments"
     t.bigint "pet_id"
     t.bigint "user_id"
