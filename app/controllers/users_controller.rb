@@ -9,7 +9,10 @@ class UsersController < ApplicationController
   def friend_accept
     target_user = User.find(params[:id])
     target_user.accept_request(current_user)
-    redirect_to pets_path
+    #should create and redirect to chat?
+    #redirect_to pets_path
+
+    # redirect_to()
   end
 
   def friend_reject
