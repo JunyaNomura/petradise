@@ -38,3 +38,16 @@ initSweetalert('#sweet-alert', {
   const link = document.querySelector('#button-log');
   link.click()
 });
+
+
+scrollLastMessageIntoView = () => {
+  const messages = document.querySelectorAll('.message');
+  const lastMessage = messages[messages.length - 1];
+  if (lastMessage) lastMessage.scrollIntoView();
+}
+
+
+
+
+
+
