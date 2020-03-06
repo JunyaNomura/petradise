@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 require 'open-uri'
-
+ChatRoom.destroy_all
 Rating.destroy_all
 Pet.destroy_all
 User.destroy_all
