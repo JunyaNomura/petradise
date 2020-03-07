@@ -51,7 +51,7 @@
   background: $white;
   align-items: center;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  border-radius: 2px;
+  border-radius: 25px;
 }
 
 .card-product-picture{
@@ -60,14 +60,19 @@
 
 .second-half {
   background: #00A699;
+  opacity: 0.7;
 }
 
 .card-product-picture-info {
   display: flex;
   width: 100%;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  padding: 10px;
-  border-radius: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  background: #00A699;
+  opacity: 0.7;
 }
 
 .card-product-value {
@@ -125,6 +130,7 @@
   display: flex;
   justify-content: center;
   text-align: center;
+  padding: 20px;
 }
 .cards-category-index {
 
