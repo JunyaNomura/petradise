@@ -16,13 +16,14 @@ class User < ApplicationRecord
   # my pet - current_user.pet
   # block pets - current_user.blocked_friends
   # requested pets - current_user.pending_friends
-
   def excluded_friends
     pending_friends + blocked_friends + friends
   end
 
   def on_friendship_accepted(friendship)
-    ChatRoom.create(user_one: friendship.friendable, user_two: friendship.friend)
+    if ChatRoom.find_by(user_one: friendship.friendable, user_two: friendship.friend).nil?
+    ChatRoom.create(user_one: friendship.friend, user_two: friendship.friendable, name: "#{friendship.friend.first_name}#{friendship.friendable.first_name}#{rand(0..6)}")
+    end
   end
 
   def chat_rooms
