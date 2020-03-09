@@ -44,6 +44,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def chats
+    @friends = current_user.friends.left_outer_joins(:messages).order("messages.created_at DESC").uniq
+    # current_user.chat_room_with(friend).order("created_at ASC")
+  end
+
   def friends
     @pet = current_user.pet || Pet.new
     @friends = current_user.friends.sort_by do |friend|

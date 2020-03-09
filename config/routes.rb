@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   get 'my_page', to: 'users#my_page', as: :my_page
   get 'friends', to: 'users#friends', as: :friends
+  get 'chats', to: 'users#chats', as: :chats
   get 'map', to: 'users#map', as: :map
   get 'users/:id/request', to: 'users#friend_request', as: :request
   get 'users/:id/accept', to: 'users#friend_accept', as: :accept

@@ -2,8 +2,12 @@
   <div style="height: 100vh" class="container d-flex flex-column justify-content-between">
       <div class="mp-avatar-pet">
         <%= cl_image_tag( current_user.pet.photo.key, class: "avatar-large", heigth:100, width: 100, crop: :fill)%>
-        <p> <%= current_user.pet.name %> </p>
+        <h3> <%= current_user.pet.name %> </h3>
+        <p><%= current_user.pet.breed %></p>
       </div>
+      <%#= link_to my_page_path, class: "button-camera" do  %>
+        <!-- <i class="fas fa-camera-retro"></i> -->
+      <%# end %>
       <div style="height: 420px; background: url(<%= cl_image_path("paw2_odxz5z", heigth: 300, width: 300, crop: :fill) %>) no-repeat center;">
         <div class="row" >
           <!-- <div class="mp-buttons"> -->
