@@ -1,6 +1,8 @@
 <%= @pet.name %>
 <%= @pet.age %>
 <%= @pet.breed %>
-# <% @related_pets.each do |r| %>
-#    <li><%= r.name %></li>
-# <% end %>
+ <%# @related_pets.each do |r| %>
+    <%#= r.name %>
+ <%# end %>
+<p><%= link_to "rate pet", new_pet_rating_path(@pet) %></p>
+
