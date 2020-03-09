@@ -43,31 +43,41 @@
     }
 }
 
+.picture-dog {
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
 .card-product{
     display: grid;
-  grid-gap: 16px;
   margin: 16px;
   width: 420px;
   background: $white;
   align-items: center;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  border-radius: 2px;
+  border-radius: 25px;
 }
+
 
 .card-product-picture{
   position: abosolute;
+  border-radius: 10px;
 }
 
 .second-half {
   background: #00A699;
+  opacity: 0.7;
 }
 
 .card-product-picture-info {
-  display: flex;
-  width: 100%;
+  // display: flex;
+  // width: 100%;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  padding: 10px;
-  border-radius: 10px;
+  padding-top: 50px;
+  padding-bottom: 20px;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  background: #00A699;
+  opacity: 0.7;
 }
 
 .card-product-value {
@@ -104,6 +114,10 @@
   height: 100px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   background-color: white;
+  p {
+    margin-top: 0;
+    margin-bottom: 0rem;
+  }
 }
 
 .card-product-description {
@@ -125,6 +139,7 @@
   display: flex;
   justify-content: center;
   text-align: center;
+  padding: 20px;
 }
 .cards-category-index {
 

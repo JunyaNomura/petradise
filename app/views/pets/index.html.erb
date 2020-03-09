@@ -4,14 +4,18 @@
 
       <%@pets.each do |pet|%>
       <div class="swiper-slide" >
+        <div class="col-12 col-xs-12 col-sm-4 offset-sm-4">
         <div class="card-product">
-          <div class="card-product-picture-info">
-            <div class="card-product-picture w-100 d-flex justify-content-center">
-              <%= cl_image_tag(pet.photo.key, width: 300, height: 300, crop: :fill) %>
+          <div class="first-half">
+          <div class="card-product-picture-info ">
+            <div class="card-product-picture w-100 d-flex justify-content-center ">
+              <%= cl_image_tag(pet.photo.key, class: "picture-dog", width: 300, height: 300, crop: :fill) %>
+              <div class="card-product-value">
+                <p><%= current_user.pet.compatibilty(pet) %>%</p>
+              </div>
             </div>
-            <div class="card-product-value">
-              <p><%= current_user.pet.compatibilty(pet) %>%</p>
-            </div>
+
+          </div>
           </div>
           <div class="second-half">
             <div class="card-product-description">
@@ -51,6 +55,7 @@
 
           <p><%= link_to "add", accept_path(pet.user), remote: true, id: "accept-link"  %></p>
           <p><%= link_to "reject", reject_path(pet.user), remote: true, id: "accept-link"  %></p>
+        </div>
         </div>
       </div>
       <% end %>
