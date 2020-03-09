@@ -1,0 +1,11 @@
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <%= link_to my_page_path, class: "navbar-icon" do %>
+    <i class="fas fa-user fa-2x"></i>
+  <% end %>
+  <%= link_to root_path do %>
+    <%= cl_image_tag("woofer", heigth: 50, width: 50, crop: :fill) %>
+  <% end %>
+  <%= link_to chats_path, class: "navbar-icon" do %>
+    <i class="fas fa-comment-dots fa-2x"></i>
+  <% end %>
+</div>
