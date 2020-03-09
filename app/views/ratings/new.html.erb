@@ -5,7 +5,7 @@
         <%= simple_form_for [@pet, @rating] do |f| %>
           <%= f.input :stars, collection: (1..5).to_a, label: "Rate your experience" %>
           <%= f.input :comments, label: "Please add comments about this dog", hint: "The dog was compatible with my dog" %>
-          <%= f.submit "Create", class: "btn btn-primary" %>
+          <%= f.submit "Rate Pet", class: "btn btn-primary" %>
         <% end %>
       </div>
     </div>

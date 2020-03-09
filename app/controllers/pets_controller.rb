@@ -8,6 +8,8 @@ class PetsController < ApplicationController
   end
 
   def show
+    #     @rating.user = @pet.user
+    # @rating.pet = @pet
     # pet_first_personality(current_user.pet.personality_list)
     # pet_second_personality(current_user.pet.personality_list)
     # pet_first_preference(current_user.pet.preference_list)
