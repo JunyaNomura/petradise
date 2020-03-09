@@ -18,7 +18,27 @@
           </div>
           </div>
           <div class="second-half">
+            <div class="dog">
+              <div class="dog-rating">
+                <% if pet.rating.blank? %>
+                <p><%= pet.rating %>  </p>
+                <% else %>
+                <p><% (pet.rating).times do %>
+                  <i class="fas fa-star"></i>
+                  <% end %>
+                  <% (5 - pet.rating).times do %>
+                  <i class="far fa-star"></i>
+                  <% end %></p>
+                  <%= pet.rating %>
+
+              <%# @ratings do |rating| %>
+
+
+              <% end %>
+              </div>
+              </div>
             <div class="card-product-description">
+
               <div class="card-product-title">
                 <p>Name:</p>
                 <p>   <%= pet.name %>  </p>
@@ -51,8 +71,7 @@
             </div>
           </div>
           <%#= link_to "show", pet_path(pet)%>
-          <%#= link_to "edit", edit_pet_path(pet)  %>
-
+          <%#= link_to "edit", edit_pet_path(pet)  <%><!-- </%> -->
           <p><%= link_to "add", accept_path(pet.user), remote: true, id: "accept-link"  %></p>
           <p><%= link_to "reject", reject_path(pet.user), remote: true, id: "accept-link"  %></p>
         </div>

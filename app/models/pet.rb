@@ -27,4 +27,13 @@ class Pet < ApplicationRecord
     # end
 
   end
+
+  def rating
+    return nil if ratings.empty?
+
+    sum = ratings.sum(&:stars)
+    (sum.to_f / ratings.length).round
+  end
+
+
  end
