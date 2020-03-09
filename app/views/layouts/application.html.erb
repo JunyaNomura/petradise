@@ -27,8 +27,11 @@
 
   </head>
   <body>
-    <%= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
+      <%#= render 'shared/navbar' %>
+    <% unless action_name == 'home' %>
+      <%= render 'shared/navbarv2' %>
+    <% end %>
+    <%#= render 'shared/flashes' %>
     <%= yield %>
 
     <%= javascript_pack_tag 'application' %>
@@ -36,6 +39,6 @@
 
 
     <%= yield :after_js %>
-              
+
   </body>
 </html>

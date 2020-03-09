@@ -18,3 +18,15 @@
   margin-left: 4px;
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
+
+.navbar-icon {
+  color: $gray;
+  .fa-user:hover {
+    color: rgb(80, 83, 99);
+    // rgb(140, 145, 171);
+  }
+  .fa-comment-dots:hover {
+    color: rgb(80, 83, 99);
+  }
+}
+

@@ -1,16 +1,21 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path("banner1")%>');">
-  <div class="container">
-      <div class="row">
-        <div class="col-4 offset-0">
+  <!-- <div class="container">
+    <div class="row">
+      <div class="col-4 offset-0"> -->
         <div class="container-banner">
-        <div class="m-1">
-          <h1>Find <br>the best possible friend for your Pet with Woofer</h1>
-          <p>Make your pet happy by conecting with amazing play companions close to your location</p>
-          <%= link_to "Start now!", pets_path, class: "btn btn-primary"%>
+          <div class="banner-logo">
+            <%= link_to root_path do %>
+              <%= cl_image_tag("woofer", class: "logo", heigth: 50, width: 50, crop: :fill) %>
+            <% end %>
+          </div>
+          <div class="container-banner-inner m-1">
+            <h1>Find <br> a friend for your Pet with Woofer</h1>
+            <p>Make your pet happy by conecting to play companions close to your location</p>
+            <%= link_to "Start now!", pets_path, class: "btn btn-primary"%>
+          </div>
         </div>
-      </div>
+  <!--     </div>
     </div>
-    </div>
-  </div>
+  </div> -->
 </div>
 
