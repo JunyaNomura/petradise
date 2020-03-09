@@ -1,18 +1,23 @@
-<%= @pet.name %>
-<%= @pet.age %>
-<%= @pet.breed %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 offset-sm-4" id="show-dog">
+      <%= @pet.name %>
+      <%= @pet.age %>
+      <%= @pet.breed %>
  <%# @related_pets.each do |r| %>
     <%#= r.name %>
  <%# end %>
-
-<% if @pet.rating.blank? %>
-  <p><%= link_to "rate pet", new_pet_rating_path(@pet) %></p>
-<% else %>
-   <p><% (@pet.rating).times do %>
-      <i class="fas fa-star"></i>
-  <% end %>
-   <% (5 - @pet.rating).times do %>
-      <i class="far fa-star"></i>
-                 <% end %></p>
-                  <%= @pet.rating %>
-<% end %>
+      <% if @pet.rating.blank? %>
+        <p><%= link_to "rate pet", new_pet_rating_path(@pet) %></p>
+      <% else %>
+         <p><% (@pet.rating).times do %>
+         <i class="fas fa-star"></i>
+         <% end %>
+         <% (5 - @pet.rating).times do %>
+         <i class="far fa-star"></i>
+        <% end %></p>
+        <%= @pet.rating %>
+      <% end %>
+    </div>
+  </div>
+</div>
