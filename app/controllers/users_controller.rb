@@ -11,8 +11,24 @@ class UsersController < ApplicationController
     target_user.accept_request(current_user)
     #should create and redirect to chat?
     #redirect_to pets_path
-
+    if target_user.pending_friends.include?(current_user)
+      current_user.accept_request(target_user)
+    else
+      current_user.friend_request(target_user)
+    end
+    # redirect_to pets_path
   end
+  
+  # ↓↓ worked_well comment out just in case the code above has a problem
+  # def friend_accept
+  #   target_user = User.find(params[:id])
+  #   if target_user.pending_friends.include?(current_user)
+  #     current_user.accept_request(target_user)
+  #   else
+  #     current_user.friend_request(target_user)
+  #   end
+  #   # redirect_to pets_path
+  # end
 
   def friend_reject
     target_user = User.find(params[:id])

@@ -5,6 +5,8 @@ import "bootstrap";
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 import { initMapbox } from '../plugins/init_mapbox';
+import { initStarRating } from '../plugins/init_star_rating';
+import { initSweetalert } from '../plugins/init_sweetalert';
 
 // initMapbox();
 function sleep (time) {
@@ -18,3 +20,34 @@ if (mapTab) {
     })
   })
 };
+
+initSweetalert('#sweet-alert-demo', {
+  title: "Remove a Friend",
+  text: "you are removing a friend",
+  icon: "success"
+}, (value) => {
+  const link = document.querySelector('#block-friend');
+  link.click()
+});
+
+initSweetalert('#sweet-alert', {
+  title: "Log out",
+  text: "You are logging out",
+  icon: "success"
+}, (value) => {
+  const link = document.querySelector('#button-log');
+  link.click()
+});
+
+
+scrollLastMessageIntoView = () => {
+  const messages = document.querySelectorAll('.message');
+  const lastMessage = messages[messages.length - 1];
+  if (lastMessage) lastMessage.scrollIntoView();
+}
+
+initStarRating();
+
+
+
+

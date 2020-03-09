@@ -16,8 +16,8 @@ class Pet < ApplicationRecord
     end
     return 0 if personality_list.count.zero?
 
-    percentage = number / personality_list.count.to_f
-    percentage > 1 ? 1 : percentage.round(2)
+    percentage = number / personality_list.count.to_f * 100
+    percentage > 100 ? 100 : percentage.round(1)
     # if personality_list && current_user.pet.preference_list include?
     #   return 1
     # elsif current_user.pet.personality_list || current_user.pet.preference_list include?
@@ -27,4 +27,13 @@ class Pet < ApplicationRecord
     # end
 
   end
+
+  def rating
+    return nil if ratings.empty?
+
+    sum = ratings.sum(&:stars)
+    (sum.to_f / ratings.length).round
+  end
+
+
  end

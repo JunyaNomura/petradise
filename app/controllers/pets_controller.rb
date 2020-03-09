@@ -2,11 +2,14 @@ class PetsController < ApplicationController
   before_action :set_pet, only: [:show, :edit, :update, :delete]
 
   def index
-    @pets = Pet.where.not(user: current_user.excluded_friends, id: current_user.pet)
-    @pet = Pet.where.not(user: current_user.excluded_friends, id: current_user.pet).first
+    @pets = Pet.where.not(user: current_user.excluded_friends, id: current_user.pet).order('name ASC')
+    # @pets = Pet.where.not(user: current_user.excluded_friends, id: current_user.pet).first(5)
+    # @pets = Pet.all
   end
 
   def show
+    #     @rating.user = @pet.user
+    # @rating.pet = @pet
     # pet_first_personality(current_user.pet.personality_list)
     # pet_second_personality(current_user.pet.personality_list)
     # pet_first_preference(current_user.pet.preference_list)

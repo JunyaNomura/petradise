@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 require 'open-uri'
-
+ChatRoom.destroy_all
 Rating.destroy_all
 Pet.destroy_all
 User.destroy_all
@@ -60,16 +60,16 @@ puts "done"
 puts "Creating Pets and ratings"
 
 pet_urls = {
-1 => "https://images.squarespace-cdn.com/content/v1/58de1d18e4fcb5a321a4651f/1521710601901-71LME30UP1OHGX56WPWB/ke17ZwdGBToddI8pDm48kNPCkNVNCr8HTxI0cd0wWREUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8PaoYXhp6HxIwZIk7-Mi3Tsic-L2IOPH3Dwrhl-Ne3Z2fIHg-i8dk9VCjQDrvlTUTlj3M_1R4Ovdf5rcFodg0tsfdurHDt8XjyaGurlSWvQe/Puppy+Pet+Caricatures.jpg",
-2 => "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto/gigs/119509859/original/a4b4d447d4d4223232912ba81768f00177de6565/do-animal-dog-cat-pet-illustration-cartoon-caricature.png",
-3 => "https://i.pinimg.com/originals/03/9e/ff/039effe37f28ff4e2124c3e299d23a03.jpg",
-4 => "https://cdnb.artstation.com/p/assets/images/images/010/182/521/large/stefan-hansson-2018v14-1-value-study.jpg?1523015861",
-5 => "https://www.jamiesale-cartoonist.com/wp-content/uploads/dog-12-2500x2500.png",
-6 => "https://caricaturesbycarrie.weebly.com/uploads/2/6/1/7/26170082/s176653966739793612_p7_i1_w2560.jpeg",
-7 => "https://mir-s3-cdn-cf.behance.net/project_modules/disp/2bdd5955527367.59888bc132eea.jpg",
-8 => "https://i.ytimg.com/vi/2XkNFIR70Ac/maxresdefault.jpg",
-9 => "https://cdn.shopify.com/s/files/1/0080/3481/1967/products/12-3-18_8cee1ebb-6144-4f30-a6e7-eae4ba5683ec_530x@2x.jpg?v=1579648340",
-10 => "https://cdnb.artstation.com/p/assets/images/images/010/736/799/4k/stefan-hansson-2018v17-2-value-study.jpg?1525954702&dl=1"
+1 => "https://images.pexels.com/photos/3671235/pexels-photo-3671235.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+2 => "https://images.pexels.com/photos/3190736/pexels-photo-3190736.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+3 => "https://images.pexels.com/photos/3812207/pexels-photo-3812207.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+4 => "https://images.pexels.com/photos/2023384/pexels-photo-2023384.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+5 => "https://images.pexels.com/photos/1458916/pexels-photo-1458916.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+6 => "https://images.pexels.com/photos/257540/pexels-photo-257540.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+7 => "https://images.pexels.com/photos/1851164/pexels-photo-1851164.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+8 => "https://images.pexels.com/photos/3813324/pexels-photo-3813324.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+9 => "https://images.pexels.com/photos/733416/pexels-photo-733416.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+10 => "https://images.pexels.com/photos/2945541/pexels-photo-2945541.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
 }
 
 User.all.each_with_index do |user, index|
@@ -84,7 +84,7 @@ User.all.each_with_index do |user, index|
       gender: ["male", "female"].sample,
       age: rand(0..18),
       breed: Faker::Creature::Dog.breed,
-      description: Faker::Internet.email
+      description: ["My dog doesn't like grass", "My dog likes to stay indoors", "My dog likes flowers", "My dog is runs super fast", "My dog likes to sleep all day long", "My dog like to eat my food", "My dog likes to eat leftover food", "My dog is very smart"].sample
       )
     file = URI.open(url)
     pet.photo.attach(io: file, filename: "person_#{number}.jpg", content_type: 'image/jpg')
