@@ -1,6 +1,11 @@
-.navbar-lewagon {
+.navbar {
   justify-content: space-between;
   background: $navbar-orange;
+  transition: opacity 0.5s ease-out, height 0.5s ease-out, padding 0.5s ease-out;
+  position: fixed;
+  top: 0;
+  z-index: 1020;
+  width: 100%;
 }
 
 .navbar-lewagon .navbar-collapse {

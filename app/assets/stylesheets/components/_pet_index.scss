@@ -1,0 +1,24 @@
+.test-pet-photo {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  background-repeat: no-repeat;
+    .test-pet-information {
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+    }
+    .test-pet-compatibility {
+      position: absolute;
+      top: 0;
+      left: 310px;
+        p {
+          font-size: 36px;
+          color: $navbar-orange;
+        }
+    }
+    .test-pet-rating {
+
+    }
+}
