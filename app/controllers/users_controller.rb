@@ -19,7 +19,16 @@ class UsersController < ApplicationController
   def friend_reject
     target_user = User.find(params[:id])
     # target_user.decline_request(current_user)
-    current_user.block_friend(target_user)
+    # binding.pry
+    if current_user.requested_friends.include?(target_user)
+      current_user.block_friend(target_user)
+    else
+      current_user.friend_request(target_user)
+      # target_user.friend_request(current_user)
+      # current_user.accept_request(target_user)
+      target_user.accept_request(current_user)
+      current_user.block_friend(target_user)
+    end
     redirect_to pets_path
   end
 

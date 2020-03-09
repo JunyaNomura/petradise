@@ -3,5 +3,38 @@
 }
 .reject {
   color: $navbar-orange;
-  padding-left: 0;
+  padding: 0;
+}
+
+.accept-btn {
+  padding: 10px;
+  margin : 10px;
+}
+
+.reject-btn {
+  padding: 10px;
+  margin : 10px;
+}
+
+.btn-container {
+  display: flex;
+  padding: 30px;
+      justify-content: space-between;
+    /* align-items: center; */
+    text-align: center;
+
+}
+
+.heart {
+  width: 150px;
+  height: 150px;
+  background: url(https://img.icons8.com/emoji/48/000000/white-heart.png) no-repeat;
+  background-position: 0 0;
+  cursor: pointer;
+}
+
+.heart:hover {
+  background-position: -2800px 0;
+  -webkit-transition: background 1s steps(28);
+  transition: background 1s steps(28);
 }

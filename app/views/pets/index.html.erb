@@ -2,8 +2,10 @@
   <div class="swiper-container">
     <div class="swiper-wrapper">
 
-      <%@pets.each do |pet|%>
-      <div class="swiper-slide" >
+
+      <%@pets.each do |pet| %>
+      <%# byebug %>
+      <div class="swiper-slide" data-id=<%= pet.id %> >
         <div class="col-12 col-xs-12 col-sm-4 offset-sm-4">
         <div class="card-product">
           <div class="first-half">
@@ -52,9 +54,13 @@
           </div>
           <%#= link_to "show", pet_path(pet)%>
           <%#= link_to "edit", edit_pet_path(pet)  %>
+          <div class="btn-container">
+            <%= link_to "reject", { controller: "users", action: "friend_reject", id: pet.user.id }, remote: true, class: "btn btn-primary reject-btn" %>
+            <div class="heart">
+              <%= link_to "add", accept_path(pet.user), remote: true, id: "accept-link" %>
+            </div>
 
-          <p><%= link_to "add", accept_path(pet.user), remote: true, id: "accept-link"  %></p>
-          <p><%= link_to "reject", reject_path(pet.user), remote: true, id: "accept-link"  %></p>
+          </div>
         </div>
         </div>
       </div>
@@ -67,6 +73,15 @@
 
 
 <script>
+  jQuery(function($) {
+  $('#swapHeart').on('click', function() {
+    var $el = $(this),
+      textNode = this.lastChild;
+    $el.find('span').toggleClass('glyphicon-heart glyphicon-heart-empty');
+    $el.toggleClass('swap');
+  });
+});
+
   var mySwiper = new Swiper('.swiper-container', {
     init: false,
     speed: 700,
@@ -82,24 +97,56 @@
       prevEl: '.swiper-button-prev',
     },
     on: {
-      init: function () {
+      init () {
         console.log('swiper initialized');
+        // console.log(pet)
+
+        const selected = document.querySelector(".swiper-slide");
+        console.log(selected.dataset.id);
+        const selected_slide = selected.dataset.id;
       },
-      slideChange: () => {
-        if ( mySwiper.activeIndex > mySwiper.previousIndex ) {
-          console.log('swipe to the left');
-          console.log('test: reject_path(pet.user)');
-          const s = document.querySelector(`[data-swiper-slide-index='${mySwiper.activeIndex}']`);
-          console.log(s);
-          // const s = document.querySelector(`[data-swiper-slide-index='${mySwiper.activeIndex}']`).
-          // s.style.display = "none";
-        } else {
-          console.log('swipe to the right');
-          console.log('test: accept_path(pet.user)');
-          // document.getElementById('edit').click();
-        }
-        console.log('active index', mySwiper.activeIndex);
-        console.log('prev index', mySwiper.previousIndex);
+      slideChange () {
+        // const selected = document.querySelector(".swiper-slide-active");
+        // // console.log(selected.dataset.id);
+        // selected_slide = selected.dataset.id;
+
+        // if ( mySwiper.activeIndex > mySwiper.previousIndex ) {
+        //   console.log('1. swipe to the left');
+        //   console.log('2. test: reject_path(pet.user)');
+        //   // const s = document.querySelector(`[data-swiper-slide-index='${mySwiper.activeIndex}']`);
+        //   console.log('3. same behaviour as clicking reject button');
+        //   // const s = document.querySelector(`[data-swiper-slide-index='${mySwiper.activeIndex}']`).
+        //   // s.style.display = "none";
+        // } else {
+        //   console.log('4. swipe to the right');
+        //   console.log('5. test: accept_path(pet.user)');
+        //   // document.getElementById('edit').click();
+        //   console.log('6. same behaviour as clicking add button');
+        //   // mySwiper.removeSlide(mySwiper.activeIndex);
+        // }
+          // console.log('active index', mySwiper.activeIndex);
+        // if (mySwiper.activeIndex === mySwiper.previousIndex) {
+        //   console.log('this is the last card');
+        // } else if ( mySwiper.previousIndex > mySwiper.activeIndex ) {
+        //   console.log('4. swipe to the right');
+        //   console.log('5. test: accept_path(pet.user)');
+        //   console.log('active index', mySwiper.activeIndex);
+        // } else {
+        //   console.log('1. swipe to the left');
+        //   console.log('2. test: reject_path(pet.user)');
+        // }
+        // if (mySwiper.activeIndex === 0) {
+        //   console.log('cannot swipe to right');
+        //   console.log(mySwiper.activeIndex);
+        // } else if (mySwiper.activeIndex > mySwiper.previousIndex) {
+        //   console.log('reject');
+        // } else {
+        //   console.log('accept');
+        // }
+        // console.log('active index', mySwiper.activeIndex);
+        // console.log('prev index', mySwiper.previousIndex);
+        // mySwiper.removeSlide(mySwiper.activeIndex);
+        // mySwiper.removeSlide(mySwiper.activeIndex);
       }
     },
   });
