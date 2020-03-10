@@ -13,7 +13,7 @@
               <div class="card-product-picture w-100 d-flex justify-content-center ">
                 <%= cl_image_tag(pet.photo.key, class: "picture-dog", width: 300, height: 300, crop: :fill) %>
             <% else %>
-              <%= images_dog1_tag %>
+              <%#= cl_image_tag("my_pet", class: "picture-dog", width: 300, height: 300, crop: :fill) %>
             <% end %>
               <div class="card-product-value">
                 <p><%= current_user.pet.compatibilty(pet) %>%</p>
