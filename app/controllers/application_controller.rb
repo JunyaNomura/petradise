@@ -10,3 +10,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:username])
   end
 end
+
+def default_url_options
+  { host: ENV[woofer.fun] || "localhost:3000" }
+end

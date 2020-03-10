@@ -8,7 +8,7 @@ class Pet < ApplicationRecord
   acts_as_taggable_on :personalities, :preferences
   GENDER = ["Male", "Female"]
   PERSONALITY = ["Shy", "Active", "Confident", "Independent", "Happy", "Adaptable"]
-  PREFERNECE = ["Shy", "Active", "Confident", "Independent", "Happy", "Adaptable"]
+  PREFERNECE = ["Indoor", "Active", "Outdoor", "Quiet", "Adaptable","Dogpark", "Running", "Relaxing", "Independent", "Likes Dog Restaurant"]
 
   def compatibilty(pet_second)
     number = personality_list.count do |pers|
