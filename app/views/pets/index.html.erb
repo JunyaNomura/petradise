@@ -79,11 +79,10 @@
           <%#= link_to "show", pet_path(pet)%>
           <%#= link_to "edit", edit_pet_path(pet)  <%><!-- </%> -->
 
-          <div class="btn-container">
-            <%= link_to "reject", { controller: "users", action: "friend_reject", id: pet.user.id }, class: "btn btn-primary reject-btn" %>
-            <%= link_to "add", accept_path(pet.user), id: "accept-link", class: "btn btn-primary accept-btn" %>
-
-          </div>
+<!--           <div class="btn-container">
+            <%#= link_to "reject", { controller: "users", action: "friend_reject", id: pet.user.id }, class: "btn btn-primary reject-btn" %>
+            <%#= link_to "add", accept_path(pet.user), id: "accept-link", class: "btn btn-primary accept-btn" %>
+          </div> -->
         </div>
         </div>
       </div>
