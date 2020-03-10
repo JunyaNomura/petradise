@@ -1,7 +1,11 @@
 <!-- <div class="container"> -->
   <div style="height: 100vh" class="container d-flex flex-column justify-content-between">
       <div class="mp-avatar-pet">
-        <%= cl_image_tag( current_user.pet.photo.key, class: "avatar-large", heigth:100, width: 100, crop: :fill)%>
+        <% if current_user.pet.photo.attached? %>
+           <%= cl_image_tag( current_user.pet.photo.key, class: "avatar-large", heigth:100, width: 100, crop: :fill)%>
+               <% else %>
+                  <%= cl_image_tag("my_pet", class: "avatar-large", heigth:100, width: 100, crop: :fill) %>
+                <% end %>
         <h3> <%= current_user.pet.name %> </h3>
         <p><%= current_user.pet.breed %></p>
       </div>

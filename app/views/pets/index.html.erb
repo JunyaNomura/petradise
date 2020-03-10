@@ -1,91 +1,116 @@
-
 <div class="cards-category-index">
   <div class="swiper-container animated zoomIn faster">
     <div class="swiper-wrapper">
-
       <%@pets.each do |pet|%>
-      <div class="swiper-slide">
-        <div class="col-12 col-xs-12 col-sm-4 offset-sm-4">
-        <div class="card-product">
-          <div class="first-half">
-          <div class="card-product-picture-info ">
-            <%#= render pet %>
+        <div class="swiper-slide" >
+          <!-- <div class="col-12 col-xs-12 col-sm-4 offset-sm-4"> -->
+          <!-- <div class="card-product"> -->
+          <!-- <div class="first-half"> -->
+          <!-- <div class="card-product-picture-info "> -->
+          <div class="card-product-picture">
             <% if pet.photo.attached? %>
-              <div class="card-product-picture w-100 d-flex justify-content-center ">
-                <%= cl_image_tag(pet.photo.key, class: "picture-dog", width: 300, height: 300, crop: :fill) %>
+              <%= cl_image_tag(pet.photo.key, class: "picture-dog", width: 300, height: 300, crop: :fill) %>
             <% else %>
-              <%= images_dog1_tag %>
+              <%#= cl_image_tag("my_pet", class: "picture-dog", width: 300, height: 300, crop: :fill) %>
             <% end %>
-              <div class="card-product-value">
-                <p><%= current_user.pet.compatibilty(pet) %>%</p>
-              </div>
+            <div class="card-product-value">
+              <p><%= current_user.pet.compatibilty(pet) %>%</p>
             </div>
-
-          </div>
-          </div>
-          <div class="second-half">
-            <div class="dog">
-              <div class="dog-rating">
-                <% if pet.rating.blank? %>
+            <div class="card-product-picture-info-name">
+              <p> <%= pet.name %> </p>
+            </div>
+            <div class="dog-rating">
+              <% if pet.rating.blank? %>
                 <p><%= pet.rating %>  </p>
-                <% else %>
+              <% else %>
                 <p><% (pet.rating).times do %>
-                  <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
                   <% end %>
                   <% (5 - pet.rating).times do %>
-                  <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
                   <% end %></p>
-                  <%= pet.rating %>
-
-              <%# @ratings do |rating| %>
-
-
               <% end %>
-              </div>
-              </div>
-            <div class="card-product-description">
-
-              <div class="card-product-title">
-                <p>Name:</p>
-                <p>   <%= pet.name %>  </p>
-              </div>
-              <div class="card-product-title ">
-                <p>Breed:</p>
-                <p><%= pet.breed %>  </p>
-              </div>
-              <div class="card-product-title">
-                <p>Age:</p>
-                <p>  <%= pet.age %></p>
-              </div>
             </div>
-            <div class="card-product-type">
-              <div class="card-product-personality">
-                <p>Personality:</p>
+            <!-- <div class="button-expand btn btn-primary" style="position: absolute; bottom: 10px; right: 10px;">Expand</div> -->
+            <%= link_to "#", class: "button-expand", id: "button-index-expand" do %>
+              <i class="fas fa-info-circle"></i>
+            <% end %>
+          </div>
+          <div class="card-information-dog">
+            <div class="card-information-dog-persnpref">
+              <div class="card-information-dog-namenbreed">
+                <p><strong><%= pet.breed %></strong></p>
+                <p><strong><%= pet.age %></strong>
+                  <% if pet.gender == "male" %>
+                    <i class="fas fa-mars"></i>
+                  <% else %>
+                    <i class="fas fa-venus"></i>
+                  <% end %>
+                </p>
+              </div>
+              <div class="card-information-dog-personalities">
+                <p><strong>Personality</strong></p>
                 <p><%= pet.personality_list %></p>
               </div>
-              <div class="card-product-personality">
-                <p>Preferences:</p>
+              <div class="card-information-dog-preferences">
+                <p><strong>Preferences</strong></p>
                 <p><%= pet.preference_list %></p>
               </div>
             </div>
-
-            <div class="card-product-div">
-              <div class="card-product-des">
-                <p>Description:</p>
-                <p> <%= pet.description %>  </p>
-              </div>
+            <div class="card-information-dog-description">
+              <p><strong>Description</strong></p>
+              <p> <%= pet.description %>  </p>
             </div>
           </div>
+          <!-- </div> -->
+          <!-- </div> -->
+          <!-- <div class="second-half"> -->
+          <!-- <div class="card-product-description">
+
+                <div class="card-product-title">
+                  <p>Name:</p>
+                  <p>   <%= pet.name %>  </p>
+                </div>
+                <div class="card-product-title ">
+                  <p>Breed:</p>
+                  <p><%= pet.breed %>  </p>
+                </div>
+                <div class="card-product-title">
+                  <p>Age:</p>
+                  <p>  <%= pet.age %></p>
+                </div>
+              </div> -->
+          <!-- <div class="card-product-type">
+                <div class="card-product-personality">
+                  <p>Personality:</p>
+                  <p><%= pet.personality_list %></p>
+                </div>
+                <div class="card-product-personality">
+                  <p>Preferences:</p>
+                  <p><%= pet.preference_list %></p>
+                </div>
+              </div> -->
+          <!-- <div class="card-product-div">
+                <div class="card-product-des">
+                  <p>Description:</p>
+                  <p> <%= pet.description %>  </p>
+                </div>
+              </div> -->
+          <!-- </div> -->
           <%#= link_to "show", pet_path(pet)%>
           <%#= link_to "edit", edit_pet_path(pet)  <%><!-- </%> -->
+          
+          <p><%#= link_to "add", accept_path(pet.user), remote: true, id: "accept-link"  %></p>
+          <p><%#= link_to "reject", reject_path(pet.user), remote: true, id: "accept-link"  %></p>
+          <!-- </div> -->
+          <!-- </div> -->
 
 <!--           <div class="btn-container">
             <%#= link_to "reject", { controller: "users", action: "friend_reject", id: pet.user.id }, class: "btn btn-primary reject-btn" %>
             <%#= link_to "add", accept_path(pet.user), id: "accept-link", class: "btn btn-primary accept-btn" %>
           </div> -->
+          
         </div>
-        </div>
-      </div>
       <% end %>
       <div class="swiper-slide"></div>
     </div>
