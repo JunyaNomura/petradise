@@ -34,7 +34,29 @@
                 <div class="button-expand btn btn-primary" style="position: absolute; bottom: 10px; right: 10px;">Expand</div>
               </div>
               <div class="card-information-dog">
+                <div class="card-information-dog-namenbreed">
+                  <p><%= pet.breed %></p>
+                  <p><%= pet.age %></p>
+                  <% if pet.gender == "male" %>
+                    <i class="fas fa-mars"></i>
+                  <% else %>
+                    <i class="fas fa-venus"></i>
+                  <% end %>
+                </div>
+                <div class="card-information-dog-persnpref">
+                  <div class="card-information-dog-personalities">
+                    <p><strong>Personality</strong></p>
+                    <p><%  pet.personality_list %></p>
+                  </div>
+                  <div class="card-information-dog-preferences">
+                    <p><strong>Preferences</strong></p>
+                    <p><%= pet.preference_list %></p>
+                  </div>
+                  <div class="card-information-dog-description">
+                    <p> <%= pet.description %>  </p>
+                  </div>
 
+                </div>
               </div>
 
             <!-- </div> -->
