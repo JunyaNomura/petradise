@@ -26,7 +26,7 @@
       <%= render 'shared/navbarv2' %>
     <% end %>
     <%#= render 'shared/flashes' %>
-    <div class="<%= 'yield-margin' unless params[:action] == 'index' && params[:controller] == 'pets' %>" >
+    <div class="<%= 'yield-margin' unless params[:action] == 'index' && params[:controller] == 'pets' ||  params[:action] == 'home' && params[:controller] == 'pages'%>" >
       <%= yield %>
     </div>
     <%= javascript_pack_tag 'application' %>

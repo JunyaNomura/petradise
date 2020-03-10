@@ -36,16 +36,17 @@
             <% end %>
           </div>
           <div class="card-information-dog">
-            <div class="card-information-dog-namenbreed">
-              <p><strong><%= pet.breed %></strong></p>
-              <p><strong><%= pet.age %></strong></p>
-              <% if pet.gender == "male" %>
-                <i class="fas fa-mars"></i>
-              <% else %>
-                <i class="fas fa-venus"></i>
-              <% end %>
-            </div>
             <div class="card-information-dog-persnpref">
+              <div class="card-information-dog-namenbreed">
+                <p><strong><%= pet.breed %></strong></p>
+                <p><strong><%= pet.age %></strong>
+                  <% if pet.gender == "male" %>
+                    <i class="fas fa-mars"></i>
+                  <% else %>
+                    <i class="fas fa-venus"></i>
+                  <% end %>
+                </p>
+              </div>
               <div class="card-information-dog-personalities">
                 <p><strong>Personality</strong></p>
                 <p><%= pet.personality_list %></p>
