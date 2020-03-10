@@ -1,3 +1,4 @@
+
 <div class="cards-category-index">
   <div class="swiper-container">
     <div class="swiper-wrapper">
@@ -11,6 +12,7 @@
               <div class="card-product-picture">
                 <% if pet.photo.attached? %>
                   <%= cl_image_tag(pet.photo.key, class: "picture-dog", width: 300, height: 300, crop: :fill) %>
+
                 <% else %>
                 <% end %>
                 <div class="card-product-value">
@@ -111,47 +113,59 @@
   </div>
 
 
-<script>
-  var mySwiper = new Swiper('.swiper-container', {
-    init: false,
-    speed: 700,
-    loop: true,
-    spaceBetween: 100,
-    autoHeight: true, //enable auto height
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    on: {
-      init: function () {
-        console.log('swiper initialized');
+  <script>
+    var mySwiper = new Swiper('.swiper-container', {
+      init: false,
+      speed: 700,
+      loop: true,
+      spaceBetween: 100,
+      autoHeight: true, //enable auto height
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
       },
-      slideChange: () => {
-        if ( mySwiper.activeIndex > mySwiper.previousIndex ) {
-          console.log('swipe to the left');
-          console.log('test: reject_path(pet.user)');
-          const s = document.querySelector(`[data-swiper-slide-index='${mySwiper.activeIndex}']`);
-          console.log(s);
-          // const s = document.querySelector(`[data-swiper-slide-index='${mySwiper.activeIndex}']`).
-          // s.style.display = "none";
-        } else {
-          console.log('swipe to the right');
-          console.log('test: accept_path(pet.user)');
-          // document.getElementById('edit').click();
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      on: {
+        init: function () {
+          console.log('swiper initialized');
+        },
+        slideChange: () => {
+          if ( mySwiper.activeIndex > mySwiper.previousIndex ) {
+            console.log('swipe to the left');
+            console.log('test: reject_path(pet.user)');
+            const s = document.querySelector(`[data-swiper-slide-index='${mySwiper.activeIndex}']`);
+            console.log(s);
+            // const s = document.querySelector(`[data-swiper-slide-index='${mySwiper.activeIndex}']`).
+            // s.style.display = "none";
+          } else {
+            console.log('swipe to the right');
+            console.log('test: accept_path(pet.user)');
+            // document.getElementById('edit').click();
+          }
+          console.log('active index', mySwiper.activeIndex);
+          console.log('prev index', mySwiper.previousIndex);
         }
+<<<<<<< HEAD
         document.querySelector("body").classList.remove("expanded")
         console.log('active index', mySwiper.activeIndex);
         console.log('prev index', mySwiper.previousIndex);
       }
     },
   });
+=======
+      },
+    });
 
-  mySwiper.init();
-  // var mySwiper2 = document.querySelector('.swiper-container').swiper
+    mySwiper.init();
+    // var mySwiper2 = document.querySelector('.swiper-container').swiper
+
+>>>>>>> master
+
+  </script>
+</div>
 
   document.querySelectorAll(".button-expand").forEach(button => {
     button.addEventListener("click", (event) => {
@@ -160,4 +174,3 @@
 
   })
 
-</script>

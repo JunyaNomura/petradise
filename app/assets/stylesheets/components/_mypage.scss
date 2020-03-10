@@ -1,0 +1,31 @@
+.mp-avatar-pet {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 360px;
+    h3 {
+      font-size: 24px;
+      padding-top: 8px;
+    }
+    p{
+      font-size: 16px;
+    }
+}
+
+.mp-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 16px;
+}
+
+.mp-buttons2 {
+  display: flex;
+  justify-content: center;
+}
+
+.mp-weather {
+  background-color: $white-mp;
+  width: 100%;
+  height: 100%;
+}
