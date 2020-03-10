@@ -38,7 +38,7 @@ user_urls = {
  p url = user_urls[number]
 
   user = User.create!(
-    first_name: Faker::Name.unique.first_name ,
+    first_name: ["Antonio", "Sho", "Junya", "TJ", "Yann", "Doug", "Sylvain", "Hiro", "Jethro", "Ant"].sample,
     last_name: Faker::Name.unique.last_name ,
     location: ["Meguro", "Ebisu", "Shinagawa", "Shinjuku", "Shibuya","Tokyo","Shinbashi","Ikebukuro","Daikanyama","Gotanda","Oosaki"].sample,
     email: Faker::Internet.email,
@@ -95,7 +95,7 @@ User.all.each_with_index do |user, index|
         Rating.create!(
 
          stars: rand(0..5),
-         comments: Faker::Quote.famous_last_words,
+         comments: ["Our dogs were really compatible with each other", "Very active dog", "Our dogs weren't compatible", "Very quiet dog", "Our dogs both like to run outside"].sample,
          user: user,
          pet: pet
          )
