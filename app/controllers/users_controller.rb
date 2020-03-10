@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def friend_request
     target_user = User.find(params[:id])
     current_user.friend_request(target_user)
@@ -6,23 +7,12 @@ class UsersController < ApplicationController
     redirect_to pets_path
   end
 
-  def friend_accept
-    target_user = User.find(params[:id])
-    target_user.accept_request(current_user)
-    #should create and redirect to chat?
-    #redirect_to pets_path
-    if target_user.pending_friends.include?(current_user)
-      current_user.accept_request(target_user)
-    else
-      current_user.friend_request(target_user)
-    end
-    # redirect_to pets_path
-  end
-  
-  # ↓↓ worked_well comment out just in case the code above has a problem
   # def friend_accept
   #   target_user = User.find(params[:id])
-  #   if target_user.pending_friends.include?(current_user)
+  #   target_user.accept_request(current_user)
+  #   #should create and redirect to chat?
+  #   #redirect_to pets_path
+  #   if target_user.requested_friends.include?(current_user)
   #     current_user.accept_request(target_user)
   #   else
   #     current_user.friend_request(target_user)
@@ -30,10 +20,28 @@ class UsersController < ApplicationController
   #   # redirect_to pets_path
   # end
 
-  def friend_reject
+  # ↓↓ worked_well comment out just in case the code above has a problem
+  def friend_accept
     target_user = User.find(params[:id])
+    if target_user.pending_friends.include?(current_user)
+      current_user.accept_request(target_user)
+    else
+      current_user.friend_request(target_user)
+    end
+    redirect_to pets_path
+  end
+
+  def friend_reject
+    # byebug
+    target_user = User.find(params[:id])
+    if current_user.requested_friends.include?(target_user)
+      current_user.block_friend(target_user)
+    else
+      target_user.friend_request(current_user)
+      current_user.block_friend(target_user)
+    end
     # target_user.decline_request(current_user)
-    target_user.block_friend(current_user)
+    # target_user.block_friend(current_user)
     redirect_to pets_path
   end
 
