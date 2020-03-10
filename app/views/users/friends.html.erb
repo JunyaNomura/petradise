@@ -47,7 +47,7 @@
                   <%= link_to "#", reject_path(friend), id: "block-friend" %>
               </div>
               <div class="tab-button-chat">
-                <%= link_to "Rate the playdate", chat_room_url(current_user.chat_room_with(friend)), class: "btn btn-primary"  %>
+                <%= link_to "Rate the playdate", new_pet_rating_url(@pet), class: "btn btn-primary"  %>
               </div>
             </div>
           </div>
