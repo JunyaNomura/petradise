@@ -1,7 +1,7 @@
 class PetsController < ApplicationController
   before_action :set_pet, only: [:show, :edit, :update, :delete]
-  respond_to :html
-  respond_to :js
+  #respond_to :html
+  #respond_to :js
 
   def index
     @pets = Pet.where.not(user: current_user.excluded_friends, id: current_user.pet).order('name ASC').limit(1)
