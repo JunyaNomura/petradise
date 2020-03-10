@@ -1,0 +1,6 @@
+<%= div_for pet do %>
+
+  <h3><%= pet.name %></h3>
+
+
+<% end %>
