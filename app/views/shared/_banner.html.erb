@@ -1,22 +1,21 @@
 <div class="banner">
-<%= video_tag("border.mp4", autoplay: true, loop: :loop, muted: true, class: "home_video")%>
+  <%= video_tag("border.mp4", autoplay: true, loop: :loop, muted: true, class: "home_video")%>
   <!-- <div class="container">
     <div class="row">
       <div class="col-4 offset-0"> -->
-        <div class="container-banner">
-          <div class="banner-logo">
-            <%= link_to root_path do %>
-              <%= cl_image_tag("woofer", class: "logo", heigth: 50, width: 50, crop: :fill) %>
-            <% end %>
-          </div>
-          <div class="container-banner-inner m-1">
-            <h1>Find <br> a friend for your Pet with Woofer</h1>
-            <p>Make your pet happy by conecting to play companions close to your location</p>
-            <%= link_to "Start now!", pets_path, class: "btn btn-primary"%>
-          </div>
-        </div>
+  <div class="container-banner">
+    <div class="banner-logo">
+      <%= link_to root_path do %>
+        <%= cl_image_tag("woofer21_wavynv", class: "logo", heigth: 50, width: 50, crop: :fill) %>
+      <% end %>
+    </div>
+    <div class="container-banner-inner">
+      <h1>Find a friend for your Pet</h1>
+      <p>Make your pet happy, connect with play companions close to you</p>
+      <%= link_to "Start Here!", pets_path, class: "button-start"%>
+    </div>
+  </div>
   <!--     </div>
     </div>
   </div> -->
 </div>
-

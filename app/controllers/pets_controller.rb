@@ -21,7 +21,6 @@ class PetsController < ApplicationController
   end
     # @related_pets = @pet.find_related_personalities
 
-
   def new
     @pet = Pet.new
     # @user = User.new
