@@ -173,7 +173,7 @@ body.expanded {
   }
 
   .card-information-dog {
-    height: 1500px;
+    height: 6000px;
   }
 }
 .card-product-picture-info {
@@ -329,6 +329,10 @@ body.expanded {
 
 .show-all-reviews strong {
       border-bottom: 1px solid;
+}
+
+.hidden {
+  display: none;
 }
 
 // Smallest device
