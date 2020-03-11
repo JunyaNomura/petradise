@@ -10,6 +10,11 @@
     <div class="show-pet-card-card">
       <%=cl_image_tag(photo.key, class: "show-pet-card-images", height: 150, width:100, crop: :fill)  %>
     </div>
+    <%= link_to 'Remove', delete_image_attachment_collection_path(photo.signed_id),
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %>
+    <%#= link_to "delete", delete_photo_path(photo)
+     %>
   <% end %>
 </div>
 <script>
