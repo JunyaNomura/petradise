@@ -1,53 +1,49 @@
 <!-- <div class="container"> -->
-  <div style="height: 100vh" class="container d-flex flex-column justify-content-between">
-      <div class="mp-avatar-pet">
-        <% if current_user.pet.photo.attached? %>
-           <%= cl_image_tag( current_user.pet.photo.key, class: "avatar-large", heigth:100, width: 100, crop: :fill)%>
-               <% else %>
-                  <%= cl_image_tag("my_pet", class: "avatar-large", heigth:100, width: 100, crop: :fill) %>
-                <% end %>
-        <h3> <%= current_user.pet.name %> </h3>
-        <p><%= current_user.pet.breed %></p>
-      </div>
-      <%#= link_to my_page_path, class: "button-camera" do  %>
-        <!-- <i class="fas fa-camera-retro"></i> -->
-      <%# end %>
-      <div style="height: 420px; background: url(<%= cl_image_path("paw2_odxz5z", heigth: 300, width: 300, crop: :fill) %>) no-repeat center;">
-        <div class="row" >
-          <!-- <div class="mp-buttons"> -->
-            <div class="col-3" style='margin-top: 5rem;'>
-              <%= link_to friends_path, class: "btnnn" do  %>
-                <i class="fas fa-users"></i>
-              <% end %>
-            </div>
-            <div class="col-3">
-              <%= link_to map_path, class: "btnnn" do  %>
-                <i class="fas fa-map-marked-alt"></i>
-              <% end %>
-            </div>
-          <!-- </div> -->
-          <!-- <div class="mp-buttons2"> -->
-            <div class="col-3">
-              <%= link_to edit_user_registration_path(current_user), class: "btnnn btn2" do  %>
-                <i class="fas fa-user-edit"></i>
-              <% end %>
-            </div>
-            <div class="col-3" style='margin-top: 5rem;'>
-              <%= link_to edit_pet_path(current_user.pet), class: "btnnn btn3" do  %>
-                <i class="fas fa-paw"></i>
-              <% end %>
-            </div>
-          <!-- </div> -->
-          <!-- <div class="mp-weather"> -->
-          <!-- </div> -->
+<div style="height: 100vh" class="container d-flex flex-column justify-content-between">
+  <div class="mp-avatar-pet">
+    <% if current_user.pet.photos.attached? %>
+      <%= cl_image_tag( current_user.pet.photos.first.key, class: "avatar-large", heigth:100, width: 100, crop: :fill)%>
+    <% else %>
+      <%= cl_image_tag("my_pet", class: "avatar-large", heigth:100, width: 100, crop: :fill) %>
+    <% end %>
+    <h3> <%= current_user.pet.name %> </h3>
+    <p><%= current_user.pet.breed %></p>
+  </div>
+  <%#= link_to my_page_path, class: "button-camera" do  %>
+    <!-- <i class="fas fa-camera-retro"></i> -->
+    <%# end %>
+    <div style="height: 420px; background: url(<%= cl_image_path("paw2_odxz5z", heigth: 300, width: 300, crop: :fill) %>) no-repeat center;">
+      <div class="row" >
+        <!-- <div class="mp-buttons"> -->
+        <div class="col-3" style='margin-top: 5rem;'>
+          <%= link_to friends_path, class: "btnnn" do  %>
+            <i class="fas fa-users"></i>
+          <% end %>
         </div>
-        <div class="d-flex justify-content-center">
-
+        <div class="col-3">
+          <%= link_to map_path, class: "btnnn" do  %>
+            <i class="fas fa-map-marked-alt"></i>
+          <% end %>
         </div>
+        <!-- </div> -->
+        <!-- <div class="mp-buttons2"> -->
+        <div class="col-3">
+          <%= link_to edit_user_registration_path(current_user), class: "btnnn btn2" do  %>
+            <i class="fas fa-user-edit"></i>
+          <% end %>
+        </div>
+        <div class="col-3" style='margin-top: 5rem;'>
+          <%= link_to edit_pet_path(current_user.pet), class: "btnnn btn3" do  %>
+            <i class="fas fa-paw"></i>
+          <% end %>
+        </div>
+        <!-- </div> -->
+        <!-- <div class="mp-weather"> -->
+        <!-- </div> -->
       </div>
+      <div class="d-flex justify-content-center">
       </div>
-<!-- </div> -->
-
-
-<%#= render "shared/tabs" %>
-
+    </div>
+  </div>
+  <!-- </div> -->
+  <%#= render "shared/tabs" %>
