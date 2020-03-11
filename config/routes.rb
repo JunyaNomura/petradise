@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'messages/create'
   get 'chat_rooms/show'
-  devise_for :users, controllers: { registrations: "registrations" }
+  devise_for :users
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :pets do

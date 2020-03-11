@@ -2,53 +2,55 @@
   <h1>My Friends</h1>
 </div>
 <div class="cards">
-  <% @friends.each do |friend| %>
-    <% if friend.pet %>
-      <div class="card-dog-big">
-        <div class="card-dog">
-          <div class="card-dog-dphoto">
-            <% if friend.pet.photo.attached? %>
-              <%= cl_image_tag(friend.pet.photo.key, class: "avatar-pet") %>
-            <% else %>
-              <%= cl_image_tag("my_pet", class: "avatar-pet") %>
-            <% end %>
-          </div>
-          <div class="pet-info">
-            <div>
-              <h5> <%= friend.pet.name %> </h5>
-              <p> <%= friend.pet.breed %></p>
-            </div>
-            <div class="card-dog-info">
-              <div class="card-dog-info-inside">
-                <span><%= friend.pet.age %></span>
-              </div>
-              <div class="card-dog-info-inside">
-                <% if friend.pet.gender == "male" %>
-                  <i class="fas fa-mars"></i>
+      <% @friends.each do |friend| %>
+        <% if friend.pet %>
+          <div class="card-dog-big">
+            <div class="card-dog">
+              <div class="card-dog-dphoto">
+                <% if friend.pet.photo.attached? %>
+                  <%= cl_image_tag(friend.pet.photo.key, class: "avatar-pet") %>
                 <% else %>
-                  <i class="fas fa-venus"></i>
+                  <%= cl_image_tag("my_pet", class: "avatar-pet") %>
                 <% end %>
               </div>
+              <div class="pet-info">
+                <div>
+                  <h5> <%= friend.pet.name %> </h5>
+                  <p> <%= friend.pet.breed %></p>
+                </div>
+                <div class="card-dog-info">
+                <div class="card-dog-info-inside">
+
+                  <span><%= friend.pet.age %></span>
+                </div>
+                <div class="card-dog-info-inside">
+                  <% if friend.pet.gender == "male" %>
+                    <i class="fas fa-mars"></i>
+                  <% else %>
+                    <i class="fas fa-venus"></i>
+                  <% end %>
+                </div>
+              </div>
+              </div>
+
+              <div class="card-dog-user">
+                <% if friend.photo.attached? %>
+                  <%= cl_image_tag(friend.photo.key, class: "avatar-bordered")%>
+                <% else %>
+                  <%= cl_image_tag("default-avatar", class: "avatar-bordered") %>
+                <% end %>
+                <div class="card-dog-user-info">
+                  <p>Owner</p>
+                  <p><strong> <%= friend.first_name %></strong></p>
+                </div>
+                  <i class="fas fa-user-slash btn reject" id="sweet-alert-demo"></i>
+                  <%= link_to "#", reject_path(friend), id: "block-friend" %>
+              </div>
+              <div class="tab-button-chat">
+                <%= link_to "Rate the playdate", new_pet_rating_url(@pet), class: "btn btn-primary"  %>
+              </div>
             </div>
           </div>
-          <div class="card-dog-user">
-            <% if friend.photo.attached? %>
-              <%= cl_image_tag(friend.photo.key, class: "avatar-bordered")%>
-            <% else %>
-              <%= cl_image_tag("default-avatar", class: "avatar-bordered") %>
-            <% end %>
-            <div class="card-dog-user-info">
-              <p>Owner</p>
-              <p><strong> <%= friend.first_name %></strong></p>
-            </div>
-            <i class="fas fa-user-slash btn reject" id="sweet-alert-demo"></i>
-            <%= link_to "#", reject_path(friend), id: "block-friend" %>
-          </div>
-          <div class="tab-button-chat">
-            <%= link_to "Rate the playdate", new_pet_rating_url(@pet), class: "button-rate-date"  %>
-          </div>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
-</div>
+        <% end %>
+      <% end %>
+    </div>
