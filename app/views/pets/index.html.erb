@@ -61,6 +61,30 @@
               <p><strong>Description</strong></p>
               <p> <%= pet.description %>  </p>
             </div>
+            <div class="show-all-reviews">
+              <p><strong>Show all reviews</strong></p>
+              <p>Owner Name:</p>
+              <p>
+                <%= current_user.first_name %>
+                <%= current_user.last_name %>
+              </p>
+              <% if pet.ratings.any? %>
+              <% pet.ratings.each do |rating| %>
+                <% (pet.rating).times do %>
+                <p>Ratings:</p>
+                  <p><% (pet.rating).times do %>
+                    <i class="fas fa-star"></i>
+                  <% end %>
+                  <% (5 - pet.rating).times do %>
+                    <i class="far fa-star"></i>
+                  <% end %>
+                  </p>
+                  <p>Comments:</p>
+                  <p><%= rating.comments %></p>
+                <% end %>
+                <% end %>
+              <% end %>
+            </div>
           </div>
 
         </div>
