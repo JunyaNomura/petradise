@@ -39,6 +39,37 @@ initSweetalert('#sweet-alert', {
   link.click()
 });
 
+initSweetalert('#sweet-alert-matched', {
+  title: "Matched",
+  text: "Your pet seems to be matched with this pet!!",
+  icon: "info",
+  buttons: {
+    cancel: {
+      text: "Skip",
+      value: null,
+      visible: true,
+      closeModal: true
+    },
+    confirm: {
+      text: "Go chatting",
+      value: true,
+      visible: true,
+      closeModal: true
+    }
+  }
+}, (value) => {
+  if (value) {
+    console.log("going to mypage");
+    window.location.href = '<%= accept_show_path(@pets.first.user) %>'
+  } else {
+    console.log("skip: closing the modal");
+    window.location.href = '<%= accept_path(@pets.first.user) %>';
+  }
+  // const link = document.querySelector('#button-log');
+  // link.click()
+});
+
+
 
 scrollLastMessageIntoView = () => {
   const messages = document.querySelectorAll('.message');
@@ -47,7 +78,5 @@ scrollLastMessageIntoView = () => {
 }
 
 initStarRating();
-
-
 
 

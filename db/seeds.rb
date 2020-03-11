@@ -134,7 +134,7 @@ antonio = User.create!(
 junya= User.create!(
     first_name: "Junya",
     last_name: "Nomura" ,
-    location: "Azabu",
+    location: "Minami-Azabu",
     email: "junya.nomura@lewagon.com",
     password: "123456"
     )

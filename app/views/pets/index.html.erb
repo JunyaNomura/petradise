@@ -74,6 +74,14 @@
 </div>
 
 
+<button id="sweet-alert-matched" class="btn btn-primary">Matched</button>
+<!-- <button id="sweet-alert-matched" class="btn-transparent">Matched</button> -->
+
+<div class="btn-group d-flex justify-content-between">
+  <button type="button" id="btn-nope"><img src="https://res.cloudinary.com/diyszwqhl/image/upload/v1583922785/nope_btn_qz1lsu.png"/><%= link_to "Nope", reject_path(@pets.first.user) %></button>
+  <button type="button" id="btn-like"><img src="https://res.cloudinary.com/diyszwqhl/image/upload/v1583922798/like_btn_jnyyno.png"/><%= link_to "Like", accept_path(@pets.first.user) %></button>
+</div>
+
 <script>
 
   var mySwiper = new Swiper('.swiper-container', {
@@ -93,32 +101,18 @@
     on: {
       init () {
         console.log('swiper initialized');
-        // console.log(pet)
-
-        const selected = document.querySelector(".swiper-slide");
-        console.log(selected.dataset.id);
-        const selected_slide = selected.dataset.id;
       },
       slideChange () {
-        // const selected = document.querySelector(".swiper-slide-active");
-        // // console.log(selected.dataset.id);
-        // selected_slide = selected.dataset.id;
-
         if ( mySwiper.activeIndex > mySwiper.previousIndex ) {
-          console.log('1. swipe to the left');
-          console.log('2. test: reject_path(pet.user)');
+          console.log('swipe to the left');
           window.location.href = '<%= reject_path(@pets.first.user) %>';
-          // const s = document.querySelector(`[data-swiper-slide-index='${mySwiper.activeIndex}']`);
-          console.log('3. same behaviour as clicking reject button');
-          // const s = document.querySelector(`[data-swiper-slide-index='${mySwiper.activeIndex}']`).
-          // s.style.display = "none";
         } else {
-          console.log('4. swipe to the right');
-          window.location.href = '<%= accept_path(@pets.first.user) %>';
-          console.log('5. test: accept_path(pet.user)');
-          // document.getElementById('edit').click();
-          console.log('6. same behaviour as clicking add button');
-          // mySwiper.removeSlide(mySwiper.activeIndex);
+          console.log('swipe to the right');
+          <% if @pets.first.user.match?(current_user) %>
+            document.querySelector('#sweet-alert-matched').click();
+          <% else %>
+            window.location.href = '<%= accept_path(@pets.first.user) %>';
+          <% end %>
         }
       }
     },
