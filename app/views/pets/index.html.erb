@@ -4,10 +4,6 @@
       <div class="swiper-wrapper">
         <%@pets.each do |pet|%>
           <div class="swiper-slide" >
-            <!-- <div class="col-12 col-xs-12 col-sm-4 offset-sm-4"> -->
-            <!-- <div class="card-product"> -->
-            <!-- <div class="first-half"> -->
-            <!-- <div class="card-product-picture-info "> -->
             <div class="card-product-picture">
               <% if pet.photos.attached? %>
                 <%= cl_image_tag(pet.photos.first.key, class: "picture-dog", width: 300, height: 300, crop: :fill) %>
