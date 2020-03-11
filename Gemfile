@@ -16,6 +16,7 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 gem 'acts-as-taggable-on', '~> 6.0'
+gem 'ngrok'
 
 gem 'cloudinary', '~> 1.12.0'
 gem 'has_friendship'
@@ -40,4 +41,3 @@ group :development, :test do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'dotenv-rails'
 end
-

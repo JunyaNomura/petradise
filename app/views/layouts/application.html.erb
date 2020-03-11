@@ -20,7 +20,7 @@
     <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
     <%= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
-  <body>
+  <body class="<%= 'non-scroll' if params[:action] == 'index' && params[:controller] == 'pets' ||  params[:action] == 'my_page' && params[:controller] == 'users'%>">
     <%#= render 'shared/navbar' %>
     <% unless action_name == 'home' %>
       <%= render 'shared/navbarv2' %>

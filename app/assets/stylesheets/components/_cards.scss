@@ -104,6 +104,8 @@
 }
 
 .card-information-dog {
+  background-color: white;
+  margin-top: -17px;
   height: 0px;
   transition: height 0.5s ease-out;
    .card-information-dog-namenbreed {
@@ -146,6 +148,7 @@
     }
     .card-information-dog-description {
       margin-left: 16px;
+      padding-bottom: 20px;
       strong {
           border-bottom: 1px solid;
         }
@@ -157,7 +160,28 @@
 //     transition: height 0.5s ease-out;
 //   }
 // expanded card info
+
+.photo-slideshow {
+  height: 100vh !important;
+  transition: height 0.5s ease-out;
+}
+.swiper-wrapper {
+  z-index: -1 !important;
+}
+
+.swiper-slide {
+  // height: 100vh !important;
+  overflow: hidden;
+}
+
+body.non-scroll {
+  height: 100vh;
+  overflow: hidden;
+}
+
 body.expanded {
+  overflow: unset;
+  height: unset;
   .navbar {
     opacity: 0;
     height: 0;
@@ -165,14 +189,16 @@ body.expanded {
   }
 
   .swiper-wrapper {
-    height: unset !important;
+    // height: unset !important;
   }
 
-  .picture-dog {
-    height: 70vh;
+  .photo-slideshow, .picture-dog {
+    height: 70vh !important;
   }
 
   .card-information-dog {
+    background-color: white;
+    margin-top: -17px;
     height: 100%;
   }
 }
@@ -186,6 +212,10 @@ body.expanded {
   border-top-right-radius: 25px;
   // background: #00A699;
   opacity: 0.7;
+}
+
+.card-product-value, .card-product-picture-info-name, .dog-rating, .button-expand {
+  z-index: 100;
 }
 
 .card-product-title {
