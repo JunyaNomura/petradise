@@ -1,0 +1,5 @@
+meta_product_name: "Woofer"
+meta_title: "Dog playdate matching application available"
+meta_description: "Dog playdate matching application available"
+meta_image: "dog1.jpg" # should exist in `app/assets/images/`
+# twitter_account: "@product_twitter_account"   # required for Twitter Cards

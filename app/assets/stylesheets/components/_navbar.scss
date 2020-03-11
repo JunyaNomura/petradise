@@ -1,6 +1,11 @@
-.navbar-lewagon {
+.navbar {
   justify-content: space-between;
   background: $navbar-orange;
+  transition: opacity 0.5s ease-out, height 0.5s ease-out, padding 0.5s ease-out;
+  position: fixed;
+  top: 0;
+  z-index: 1020;
+  width: 100%;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -18,3 +23,15 @@
   margin-left: 4px;
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
+
+.navbar-icon {
+  color: $gray;
+  .fa-user:hover {
+    color: rgb(80, 83, 99);
+    // rgb(140, 145, 171);
+  }
+  .fa-comment-dots:hover {
+    color: rgb(80, 83, 99);
+  }
+}
+

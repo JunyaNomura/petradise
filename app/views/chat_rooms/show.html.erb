@@ -3,7 +3,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
-      <div class="chat-header"><h4><%= @chat_room.id %></h4></div>
+      <div class="chat-header"><h4><%= "#{@chat_room.name}#{@chat_room.id}" %></h4></div>
       <div class="messages">
         <% @chat_room.messages.each do |message| %>
           <%= render "messages/message", message: message, user_is_messages_author: message.user == current_user %>
@@ -34,6 +34,7 @@
 </div>
 <% content_for :after_js do %>
   <script>
+    // sendMessage();
     scrollLastMessageIntoView();
     App['chat_room_<%= @chat_room.id %>'] = App.cable.subscriptions.create({ channel: 'ChatRoomsChannel', chat_room_id: '<%= @chat_room.id %>' }, {
       received: (data) => {

@@ -3,15 +3,16 @@
   border-radius: 50%;
 }
 .avatar-large {
-  width: 130px;
-  height: 130px;
+  width: 250px;
+  height: 250px;
   border-radius: 50%;
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-  border: white 1px solid;
+  border: $navbar-orange 1px solid;
+  margin-top: 32px;
 }
 .avatar-bordered {
-  width: 25px;
-  height: 25px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   border: white 1px solid;
@@ -22,4 +23,13 @@
   border-radius: 0px;
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   border: white 1px solid;
+}
+
+.avatar-chat-room {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  border: $navbar-orange 1px solid;
+  margin-top: 32px;
 }
