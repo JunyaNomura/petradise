@@ -18,13 +18,27 @@
 }
 
 .form-pet {
-    background: #00A699;
-    opacity: 0.7;
+  background: $green2;
+  opacity: 0.7;
   padding: 20px 20px;
   margin-top: 50px;
   border-radius: 3px;
   box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    small {
+      font-weight: bold;
+      font-color: $black;
+    }
+    p {
+      font-weight: bold;
+    }
 }
 
-.form-map {
+.form-group {
+  small {
+    font-weight: bold;
+    font-color: $black;
+  }
+  p {
+    font-weight: bold;
+  }
 }
