@@ -11,13 +11,6 @@ class PetsController < ApplicationController
     # respond_with(@pets)
   end
 
-  def delete_photo
-    @image = ActiveStorage::Blob.find_signed(params[:id])
-    raise
-    @image.purge
-    render 'show'
-  end
-
   def show
     #     @rating.user = @pet.user
     # @rating.pet = @pet
