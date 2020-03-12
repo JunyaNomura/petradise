@@ -1,14 +1,14 @@
 <div class="myfriends-title">
   <h1> My Chats</h1>
 </div>
-      <%#= cl_image_tag(current_user.friends.first.pet.photo.key, class: "avatar-chat-room") %>
+<%#= cl_image_tag(current_user.friends.first.pet.photo.key, class: "avatar-chat-room") %>
 <div class="chat-list">
-<%# byebug %>
+  <%# byebug %>
   <% @friends.each do |friend| %>
     <div class="chat-room">
       <div class="chat-room-avatar">
         <%= link_to chat_room_url(current_user.chat_room_with(friend)) do %>
-          <%= cl_image_tag(friend.pet.photo.key, class: "avatar-chat-room") %>
+          <%= cl_image_tag(friend.pet.photos.first.key, class: "avatar-chat-room") %>
         <% end %>
       </div>
       <div class="chat-room-info">

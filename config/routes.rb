@@ -27,4 +27,10 @@ Rails.application.routes.draw do
   get 'users/:id/remove', to: 'users#friend_remove', as: :remove
 
   mount ActionCable.server => "/cable"
+
+  resources :collections do
+    member do
+      delete :delete_image_attachment
+    end
+  end
 end

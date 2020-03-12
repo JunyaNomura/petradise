@@ -19,7 +19,7 @@ class PetsController < ApplicationController
     # pet_first_preference(current_user.pet.preference_list)
     # pet_second_preference(current_user.pet.preference_list)
   end
-    # @related_pets = @pet.find_related_personalities
+  # @related_pets = @pet.find_related_personalities
 
   def new
     @pet = Pet.new
@@ -59,7 +59,7 @@ class PetsController < ApplicationController
   end
 
   def pet_params
-    params.require(:pet).permit(:name, :gender, :age, :breed, :description, :photo, preference_list: [], personality_list: [] )
+    params.require(:pet).permit(:name, :gender, :age, :breed, :description, photos: [], preference_list: [], personality_list: [] )
   end
 
 end

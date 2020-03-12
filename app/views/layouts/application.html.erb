@@ -25,14 +25,20 @@
 
     <%= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
-  <body>
+  <body class="<%= 'non-scroll' if params[:action] == 'index' && params[:controller] == 'pets' ||  params[:action] == 'my_page' && params[:controller] == 'users'%>">
     <%#= render 'shared/navbar' %>
     <% unless action_name == 'home' %>
       <%= render 'shared/navbarv2' %>
     <% end %>
     <%#= render 'shared/flashes' %>
-    <div class="<%= 'yield-margin' unless params[:action] == 'index' && params[:controller] == 'pets' ||  params[:action] == 'home' && params[:controller] == 'pages'%>" >
-      <%= yield %>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-sm-12">
+          <div class="<%= 'yield-margin' unless params[:action] == 'index' && params[:controller] == 'pets' ||  params[:action] == 'home' && params[:controller] == 'pages'%>" >
+            <%= yield %>
+          </div>
+        </div>
+      </div>
     </div>
     <%= javascript_pack_tag 'application' %>
     <%= yield :after_js %>
