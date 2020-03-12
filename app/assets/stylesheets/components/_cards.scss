@@ -76,20 +76,33 @@
         }
     }
     .dog-rating {
+      display: flex;
       position: absolute;
       bottom: 0px;
       left: 0px;
       font-size: 26px;
       background-color: white;
       width: 100%;
+      padding-top: 8px;
+      align-items: center;
         .fas {
           color:$green2;
           margin-left: 4px;
+          font-size: 22px;
+          transform: rotate(135deg);
         }
         .boni {
           color:$navbar-orange;
           opacity: 0.3;
           margin-left: 4px;
+          font-size: 22px;
+          transform: rotate(135deg);
+        }
+        span {
+          margin-left: 4px;
+          font-size: 20px;
+          color: grey;
+          margin-bottom: 16px;
         }
     }
     .card-product-picture-info-name {
@@ -212,10 +225,12 @@ body.expanded {
     .fas {
       color:$green2;
       margin-left: 4px;
+      transform: rotate(135deg);
     }
     .boni {
       color:$navbar-orange;
       opacity: 0.3;
+      transform: rotate(135deg);
     }
     i {
         font-size: 12px;
@@ -233,10 +248,12 @@ body.expanded {
       .fas {
         color:$green2;
         margin-left: 4px;
+        transform: rotate(135deg);
       }
       .boni {
         color:$navbar-orange;
         opacity: 0.3;
+        transform: rotate(135deg);
       }
       i {
         font-size: 12px;
@@ -331,9 +348,9 @@ body.expanded {
     /* justify-content: space-between; */
       align-items: center;
       background: $white;
-      border-radius: 4px;
+      border-radius: 25px;
       height: 50px;
-      width: 90%;
+      width: 50%;
       box-shadow: 0 1px 2px rgba(0,0,0,0.2);
       // margin-top: 8px;
       margin: 0 auto;
@@ -373,6 +390,23 @@ body.expanded {
 .tab-button-chat {
   text-align: center;
   margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+   .button-chat {
+    font-size: 16px;
+    margin: 0 8px;
+    width: 30%;
+    flex: 100%;
+   }
+   .tab-button-chat-i {
+      display: flex;
+      // width: 30%;
+      flex: 1;
+        .fa-bone {
+          transform: rotate(135deg);
+        }
+   }
 }
 .card-dog-info {
   display: flex;
@@ -387,6 +421,9 @@ body.expanded {
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   text-align: center;
   color: $navbar-orange;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .pet-info {
