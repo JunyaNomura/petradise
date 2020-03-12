@@ -35,7 +35,7 @@ class User < ApplicationRecord
   end
 
   def match?(target_user)
-    if target_user.pending_friends.include?(self)
+    if self.pending_friends.include?(target_user)
       return true
     else
       return false

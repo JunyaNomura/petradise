@@ -74,13 +74,14 @@
 </div>
 
 
-<button id="sweet-alert-matched" class="btn btn-primary">Matched</button>
+<!-- <button id="sweet-alert-matched" class="btn btn-primary">Matched</button> -->
 <button id="sweet-alert-matched" class="btn-transparent">Matched</button>
 
-<!-- <div class="btn-group d-flex justify-content-between">
-  <button type="button" id="btn-nope"><img src="https://res.cloudinary.com/diyszwqhl/image/upload/v1583922785/nope_btn_qz1lsu.png"/><%= link_to "Nope", reject_path(@pets.first.user) %></button>
-  <button type="button" id="btn-like"><img src="https://res.cloudinary.com/diyszwqhl/image/upload/v1583922798/like_btn_jnyyno.png"/><%= link_to "Like", accept_path(@pets.first.user) %></button>
-</div> -->
+<div class="btn-group d-flex justify-content-between">
+  <button type="button" class="btn-transparent" id="btn-nope"><img src="https://res.cloudinary.com/diyszwqhl/image/upload/v1583922785/nope_btn_qz1lsu.png"/><%= link_to "Nope", reject_path(@pets.first.user) %></button>
+  <button type="button" class="btn-transparent" id="btn-like"><img src="https://res.cloudinary.com/diyszwqhl/image/upload/v1583922798/like_btn_jnyyno.png"/><%= link_to "Like", accept_path(@pets.first.user) %></button>
+  <button type="button" class="btn-transparent" id="btn-my-friend"><%= link_to "friend", friends_path(@pets.first.user) %></button>
+</div>
 
 <script>
 
@@ -129,3 +130,6 @@
 
 
 </script>
+
+
+

@@ -40,18 +40,18 @@ initSweetalert('#sweet-alert', {
 });
 
 initSweetalert('#sweet-alert-matched', {
-  title: "Matched",
-  text: "Your pet seems to be matched with this pet!!",
-  icon: "info",
+  title: "Matched!!",
+  text: "Your pet seems to have been matched with this pet!!",
+  icon: "success",
   buttons: {
     cancel: {
-      text: "Skip",
+      text: "Keep swiping",
       value: null,
       visible: true,
       closeModal: true
     },
     confirm: {
-      text: "Go chatting",
+      text: "Check my friend",
       value: true,
       visible: true,
       closeModal: true
@@ -59,11 +59,11 @@ initSweetalert('#sweet-alert-matched', {
   }
 }, (value) => {
   if (value) {
-    console.log("going to mypage");
-    window.location.href = '<%= accept_show_path(@pets.first.user) %>'
+    console.log("going to my friend page");
+    document.querySelector("#btn-my-friend a").click();
   } else {
     console.log("skip: closing the modal");
-    window.location.href = '<%= accept_path(@pets.first.user) %>';
+    document.querySelector("#btn-like a").click();
   }
   // const link = document.querySelector('#button-log');
   // link.click()
