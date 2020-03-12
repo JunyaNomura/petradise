@@ -115,9 +115,24 @@
       <div class="swiper-button-next"></div> -->
     </div>
   </div>
+
+</div>
+
+
+<!-- <button id="sweet-alert-matched" class="btn btn-primary">Matched</button> -->
+<button id="sweet-alert-matched" class="btn-transparent">Matched</button>
+
+<div class="btn-group d-flex justify-content-between">
+  <button type="button" class="btn-transparent" id="btn-nope"><img src="https://res.cloudinary.com/diyszwqhl/image/upload/v1583922785/nope_btn_qz1lsu.png"/><%= link_to "Nope", reject_path(@pets.first.user) %></button>
+  <button type="button" class="btn-transparent" id="btn-like"><img src="https://res.cloudinary.com/diyszwqhl/image/upload/v1583922798/like_btn_jnyyno.png"/><%= link_to "Like", accept_path(@pets.first.user) %></button>
+  <button type="button" class="btn-transparent" id="btn-my-friend"><%= link_to "friend", friends_path(@pets.first.user) %></button>
+</div>
+
+
 <% else %>
   <%= render 'shared/create_pet' %>
 <% end %>
+
 <script>
   var mySwiper = new Swiper('.swiper-container', {
     init: false,
@@ -127,11 +142,21 @@
     autoHeight: true, //enable auto height
     freeModeMomentum: true,
     on: {
+
+      init () {
+        console.log('swiper initialized');
+      },
       slideChange () {
         if ( mySwiper.activeIndex > mySwiper.previousIndex ) {
+          console.log('swipe to the left');
           window.location.href = '<%= reject_path(@pets.first.user) %>';
         } else {
-          window.location.href = '<%= accept_path(@pets.first.user) %>';
+          console.log('swipe to the right');
+          <% if @pets.first.user.match?(current_user) %>
+            document.querySelector('#sweet-alert-matched').click();
+          <% else %>
+            window.location.href = '<%= accept_path(@pets.first.user) %>';
+          <% end %>
         }
       }
     },
@@ -162,6 +187,7 @@
   // var mySwiper2 = document.querySelector('.swiper-container').swiper
     // var mySwiper2 = document.querySelector('.swiper-container').swiper
   document.querySelectorAll(".button-expand").forEach(button => {
+
   button.addEventListener("click", (event) => {
   document.querySelector("body").classList.toggle("expanded")
   document.querySelector("body").classList.toggle("non-scroll")
