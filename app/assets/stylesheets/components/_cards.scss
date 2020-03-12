@@ -84,9 +84,12 @@
       width: 100%;
         .fas {
           color:$green2;
+          margin-left: 4px;
         }
-        .far {
+        .boni {
           color:$navbar-orange;
+          opacity: 0.3;
+          margin-left: 4px;
         }
     }
     .card-product-picture-info-name {
@@ -117,7 +120,7 @@
     p {
       margin-top: 0;
       margin-bottom: 1rem;
-      font-size: 32px;
+      font-size: 18px;
       /* color: white; */
       /* color: rgba(11, 98, 67, 0.8); */
       padding: 4px 16px;
@@ -127,7 +130,7 @@
     i {
       margin-top: 0;
       margin-bottom: 1rem;
-      font-size: 32px;
+      font-size: 18px;
       /* color: white; */
       /* color: rgba(11, 98, 67, 0.8); */
       padding: 4px 16px;
@@ -201,13 +204,46 @@ body.expanded {
     height: 100%;
   }
 
+  // .first-reviews-rating {
+  //   border-top: 2px groove black;
+  //   margin-right: 16px;
+  // }
+  .remaining-reviews {
+    .fas {
+      color:$green2;
+      margin-left: 4px;
+    }
+    .boni {
+      color:$navbar-orange;
+      opacity: 0.3;
+    }
+    i {
+        font-size: 12px;
+      }
+      .remaining-reviwes-p {
+        border-top: 2px groove black;
+      }
+  }
   .first-reviews {
     background-color: white;
+      .first-reviews-p {
+        border-top: 2px groove black;
+        margin-right: 16px;
+      }
+      .fas {
+        color:$green2;
+        margin-left: 4px;
+      }
+      .boni {
+        color:$navbar-orange;
+        opacity: 0.3;
+      }
       i {
-        font-size: 18px;
+        font-size: 12px;
       }
   }
 }
+
 .card-product-picture-info {
   // display: flex;
   // width: 100%;
@@ -395,7 +431,12 @@ body.expanded {
 .show-all-reviews {
   margin-left: 16px;
   p {
-    font-size: 32px;
+    font-size: 18px;
+  }
+  h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 16px;
   }
 }
 
