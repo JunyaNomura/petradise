@@ -83,6 +83,33 @@
       color: white;
     }
 }
+
+.btn-transparent {
+  display: none;
+}
+
+#btn-nope {
+  width: 100px;
+  padding: 10px;
+  margin: 10px;
+}
+
+#btn-like {
+  width: 100px;
+  padding: 10px;
+  margin: 10px;
+}
+
+button {
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+button img {
+  display: block;
+  
+}
 .button-chat {
   background-color: $green2;
   padding: 10px;
@@ -95,4 +122,11 @@
       text-decoration: none;
       color: white;
     }
+
 }
+
+#button-chat-margin {
+  margin-right: 16px;
+}
+
+

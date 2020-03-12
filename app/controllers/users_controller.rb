@@ -31,6 +31,13 @@ class UsersController < ApplicationController
     redirect_to pets_path
   end
 
+
+  def friend_accept_show
+    target_user = User.find(params[:id])
+    current_user.accept_request(target_user)
+    redirect_to pet_path(target_user.pet)
+  end
+
   def friend_reject
     # byebug
     target_user = User.find(params[:id])
