@@ -10,7 +10,7 @@
                   <% if pet.photos.attached? %>
                     <%  pet.photos.each do |photo|%>
                       <div class="swiper-slide" >
-                        <%= cl_image_tag(photo.key, class: "picture-dog", width: 300, height: 300, crop: :fill) %>
+                        <%= cl_image_tag(photo.key, class: "picture-dog", width: 1000, height: 1000, crop: :fill) %>
                       </div>
                     <% end %>
                   <% end %>
@@ -123,6 +123,7 @@
   document.querySelectorAll(".button-expand").forEach(button => {
   button.addEventListener("click", (event) => {
   document.querySelector("body").classList.toggle("expanded")
+  document.querySelector("body").classList.toggle("non-scroll")
   });
   })
 </script>

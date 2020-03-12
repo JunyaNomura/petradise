@@ -170,7 +170,6 @@
 }
 
 .swiper-slide {
-  // height: 100vh !important;
   overflow: hidden;
 }
 
@@ -189,7 +188,7 @@ body.expanded {
   }
 
   .swiper-wrapper {
-    // height: unset !important;
+    height: unset !important;
   }
 
   .photo-slideshow, .picture-dog {
