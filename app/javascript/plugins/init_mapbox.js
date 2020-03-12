@@ -29,15 +29,9 @@ window.initMapbox = function () {
       element.style.height = '80px';
       element.style.borderRadius = "40px"
 
-      const elementUser = document.createElement('div');
-      elementUser.className = 'marker';
-      elementUser.style.backgroundImage = `url('${marker.image_user}')`;
-      elementUser.style.backgroundSize = 'contain';
-      elementUser.style.width = '80px';
-      elementUser.style.height = '80px';
-      elementUser.style.borderRadius = "40px"
 
-      new mapboxgl.Marker(element,elementUser)
+
+      new mapboxgl.Marker(element)
         .setLngLat([ marker.lng, marker.lat ])
         .setPopup(popup)
         .addTo(map);

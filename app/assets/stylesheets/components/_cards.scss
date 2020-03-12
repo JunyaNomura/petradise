@@ -155,6 +155,12 @@
     }
 }
 
+.back-to-home-button a {
+  text-decoration: none;
+  color: $black;
+  background-color: $black;
+}
+
 // .card-information-dog {
 //     height: 0px;
 //     transition: height 0.5s ease-out;
