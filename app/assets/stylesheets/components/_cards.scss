@@ -438,7 +438,8 @@ body.expanded {
 .show-pet-card {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 16px;
+  grid-gap: 12px;
+  margin: 0 8px;
     .show-pet-card-card {
       position: relative;
       background: $navbar-orange;
@@ -458,6 +459,7 @@ body.expanded {
     }
     .show-pet-card-images {
       border-radius: 16px;
+      width: 100%;
     }
 }
 #pet_photos {
