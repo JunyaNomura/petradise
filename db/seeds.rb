@@ -115,7 +115,7 @@ User.all.each_with_index do |user, index|
     pet.save!
     # pet.photo.attach(io: file, filename: "#{pet_name}.jpg", content_type: 'image/jpg')
     # pet.save!
-    rand(1..3).times do
+    rand(10..30).times do
       Rating.create!(
         stars: rand(0..5),
         comments: ["Our dogs were really compatible with each other", "Very active dog", "Our dogs weren't compatible", "Very quiet dog", "Our dogs both like to run outside"].sample,
