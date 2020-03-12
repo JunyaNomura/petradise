@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   get 'users/:id/request', to: 'users#friend_request', as: :request
   get 'users/:id/accept', to: 'users#friend_accept', as: :accept
   get 'users/:id/reject', to: 'users#friend_reject', as: :reject
-
+  get 'users/:id/accept_show', to: 'users#friend_accept_show', as: :accept_show
   # post 'chat_rooms/:chat_room_id/messages', to: 'messages#create', as: :chat_room_messages
   # get 'chat_rooms/:id', to: 'chat_rooms#show', as: :chat_room
 

@@ -33,4 +33,13 @@ class User < ApplicationRecord
   def chat_room_with(user)
     chat_rooms.find_by(user_one: user)or(chat_rooms.find_by(user_two: user))
   end
+
+  def match?(target_user)
+    if self.pending_friends.include?(target_user)
+      return true
+    else
+      return false
+    end
+  end
+
 end

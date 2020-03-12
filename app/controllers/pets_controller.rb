@@ -4,7 +4,7 @@ class PetsController < ApplicationController
   #respond_to :js
 
   def index
-    @pets = Pet.where.not(user: current_user.excluded_friends, id: current_user.pet).order('name ASC').limit(1)
+      @pets = Pet.where.not(user: current_user.excluded_friends, id: current_user.pet).order('name ASC').limit(1)
     # byebug
     # @pets = Pet.where.not(user: current_user.excluded_friends, id: current_user.pet).first(5)
     # @pets = Pet.all
