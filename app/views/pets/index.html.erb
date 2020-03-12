@@ -75,12 +75,12 @@
 
 
 <button id="sweet-alert-matched" class="btn btn-primary">Matched</button>
-<!-- <button id="sweet-alert-matched" class="btn-transparent">Matched</button> -->
+<button id="sweet-alert-matched" class="btn-transparent">Matched</button>
 
-<div class="btn-group d-flex justify-content-between">
+<!-- <div class="btn-group d-flex justify-content-between">
   <button type="button" id="btn-nope"><img src="https://res.cloudinary.com/diyszwqhl/image/upload/v1583922785/nope_btn_qz1lsu.png"/><%= link_to "Nope", reject_path(@pets.first.user) %></button>
   <button type="button" id="btn-like"><img src="https://res.cloudinary.com/diyszwqhl/image/upload/v1583922798/like_btn_jnyyno.png"/><%= link_to "Like", accept_path(@pets.first.user) %></button>
-</div>
+</div> -->
 
 <script>
 
@@ -122,9 +122,9 @@
   // var mySwiper2 = document.querySelector('.swiper-container').swiper
     // var mySwiper2 = document.querySelector('.swiper-container').swiper
   document.querySelectorAll(".button-expand").forEach(button => {
-  button.addEventListener("click", (event) => {
-  document.querySelector("body").classList.toggle("expanded")
-  });
+    button.addEventListener("click", (event) => {
+      document.querySelector("body").classList.toggle("expanded")
+    });
   })
 
 
