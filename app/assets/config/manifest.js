@@ -3,3 +3,4 @@
 //= link_directory ../stylesheets .css
 //= link pup.mp4
 //= link border.mp4
+//= link_directory ../javascripts .json
