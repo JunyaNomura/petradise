@@ -1,137 +1,267 @@
 <div class="cards-category-index">
-  <div class="swiper-container animated zoomIn faster">
+  <div class="swiper-container">
     <div class="swiper-wrapper">
-      <%@pets.each do |pet|%>
-        <div class="swiper-slide" >
-          <!-- <div class="col-12 col-xs-12 col-sm-4 offset-sm-4"> -->
-          <!-- <div class="card-product"> -->
-          <!-- <div class="first-half"> -->
-          <!-- <div class="card-product-picture-info "> -->
-          <div class="card-product-picture">
-            <% if pet.photo.attached? %>
+      <%@pets.each do |pet| %>
+      <%# byebug %>
+      <div class="swiper-slide" data-hash=<%= pet.user.id %> >
+        <div class="col-12 col-xs-12 col-sm-4 offset-sm-4">
+        <div class="card-product">
+          <div class="first-half">
+          <div class="card-product-picture-info ">
+            <div class="card-product-picture w-100 d-flex justify-content-center ">
               <%= cl_image_tag(pet.photo.key, class: "picture-dog", width: 300, height: 300, crop: :fill) %>
-            <% else %>
-              <%#= cl_image_tag("my_pet", class: "picture-dog", width: 300, height: 300, crop: :fill) %>
-            <% end %>
-            <div class="card-product-value">
-              <p><%= current_user.pet.compatibilty(pet) %>%</p>
-            </div>
-            <div class="card-product-picture-info-name">
-              <p> <%= pet.name %> </p>
-            </div>
-            <div class="dog-rating">
-              <% if pet.rating.blank? %>
-                <p><%= pet.rating %>  </p>
-              <% else %>
-                <p><% (pet.rating).times do %>
-                    <i class="fas fa-star"></i>
-                  <% end %>
-                  <% (5 - pet.rating).times do %>
-                    <i class="far fa-star"></i>
-                  <% end %></p>
-              <% end %>
-            </div>
-            <!-- <div class="button-expand btn btn-primary" style="position: absolute; bottom: 10px; right: 10px;">Expand</div> -->
-            <%= link_to "#", class: "button-expand", id: "button-index-expand" do %>
-              <i class="fas fa-info-circle"></i>
-            <% end %>
-          </div>
-          <div class="card-information-dog">
-            <div class="card-information-dog-persnpref">
-              <div class="card-information-dog-namenbreed">
-                <p><strong><%= pet.breed %></strong></p>
-                <p><strong><%= pet.age %></strong>
-                  <% if pet.gender == "male" %>
-                    <i class="fas fa-mars"></i>
-                  <% else %>
-                    <i class="fas fa-venus"></i>
-                  <% end %>
-                </p>
+              <div class="card-product-value">
+                <p><%= current_user.pet.compatibilty(pet) %>%</p>
               </div>
-              <div class="card-information-dog-personalities">
-                <p><strong>Personality</strong></p>
+            </div>
+          </div>
+          </div>
+          <div class="second-half">
+            <div class="card-product-description">
+              <div class="card-product-title">
+                <p>Name:</p>
+                <p>   <%= pet.name %>  </p>
+              </div>
+              <div class="card-product-title ">
+                <p>Breed:</p>
+                <p><%= pet.breed %>  </p>
+              </div>
+              <div class="card-product-title">
+                <p>Age:</p>
+                <p>  <%= pet.age %></p>
+              </div>
+            </div>
+            <div class="card-product-type">
+              <div class="card-product-personality">
+                <p>Personality:</p>
                 <p><%= pet.personality_list %></p>
               </div>
-              <div class="card-information-dog-preferences">
-                <p><strong>Preferences</strong></p>
+              <div class="card-product-personality">
+                <p>Preferences:</p>
                 <p><%= pet.preference_list %></p>
               </div>
             </div>
-            <div class="card-information-dog-description">
-              <p><strong>Description</strong></p>
-              <p> <%= pet.description %>  </p>
+            <div class="card-product-div">
+              <div class="card-product-des">
+                <p>Description:</p>
+                <p> <%= pet.description %>  </p>
+              </div>
             </div>
           </div>
-
+          <%= link_to "show", pet_path(pet)%>
+          <%#= link_to "edit", edit_pet_path(pet)  %>
+          <div class="btn-container">
+            <%# byebug %>
+            <%= pet.user.id %>
+            <%= current_user.id %>
+            <%#= link_to "reject", { controller: "users", action: "friend_reject", id: pet.user.id }, remote: true, class: "btn btn-primary reject-btn", id: "reject-link"%>
+            <%= link_to "reject", reject_url(pet.user), remote:true, id: "reject-link" %>
+            <div class="heart">
+              <%= link_to "add", accept_path(pet.user), remote: true, id: "accept-link" %>
+            </div>
+          </div>
         </div>
+        </div>
+      </div>
       <% end %>
-      <div class="swiper-slide"></div>
     </div>
     <div class="swiper-pagination"></div>
     <div class="swiper-button-prev"></div>
     <div class="swiper-button-next"></div>
   </div>
-</div>
-
-
 <script>
+  jQuery(function($) {
+  $('#swapHeart').on('click', function() {
+    var $el = $(this),
+      textNode = this.lastChild;
+    $el.find('span').toggleClass('glyphicon-heart glyphicon-heart-empty');
+    $el.toggleClass('swap');
+  });
+});
+  // function reject() {
+  //   document.getElementById('reject-link').click();
+  //   // const selected2 = document.querySelector(".swiper-slide-active");
+  // }
 
+  // var mySwiper = new Swiper('.swiper-container', {
+  //   init: false,
+  //   speed: 700,
+  //   loop: false,
+  //   spaceBetween: 100,
+  //   autoHeight: true, //enable auto height
+  //   pagination: {
+  //     el: '.swiper-pagination',
+  //     clickable: true,
+  //   },
+  //   navigation: {
+  //     nextEl: '.swiper-button-next',
+  //     prevEl: '.swiper-button-prev',
+  //   }
+  // });
+
+  // mySwiper.on('init', () => {
+
+  // });
+
+
+  // var swiper = new Swiper('.swiper-container', {
+  //       slidesPerView: 1,
+  //       spaceBetween: 30,
+  //       loop: false,
+  //       pagination: {
+  //         el: '.swiper-pagination',
+  //         clickable: true,
+  //       },
+  //       navigation: {
+  //         nextEl: '.swiper-button-next',
+  //         prevEl: '.swiper-button-prev',
+  //       },
+  //     });
+
+
+  // var swiper = new Swiper('.swiper-container', {
+  //     init: false,
+  //     speed: 700,
+  //     loop: true,
+  //     spaceBetween: 100,
+  //     autoHeight: true, //enable auto height
+  //     pagination: {
+  //       el: '.swiper-pagination',
+  //       clickable: true,
+  //     },
+  //     navigation: {
+  //       nextEl: '.swiper-button-next',
+  //       prevEl: '.swiper-button-prev',
+  //     }
+  //   });
+
+  // swiper.init();
+
+  // swiper.on('slideChange', () => {
+  //   console.log('slide changed');
+  //   // console.log('this',this)
+  //   var rejectID = document.querySelector(".swiper-slide-active").dataset.id;
+  //   console.log('reject', reject)
+  //   document.getElementById('reject-link').click();
+  // });
+  // mySwiper.init();
+  // mySwiper.on('slideChange', () => {
+  //   document.getElementById('reject-link').click();
+  // })
+  // var mySwiper2 = document.querySelector('.swiper-container').swiper
+
+
+
+  // const reject = document.getElementById('reject-link').addEventListener('click', mySwiper.slideChange);
   var mySwiper = new Swiper('.swiper-container', {
-    init: false,
-    speed: 700,
-    loop: true,
-    spaceBetween: 0,
-    autoHeight: true, //enable auto height
-    // pagination: {
-    //   el: '.swiper-pagination',
-    //   clickable: true,
-    // },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    on: {
-      init () {
-        console.log('swiper initialized');
-        // console.log(pet)
-
-        const selected = document.querySelector(".swiper-slide");
-        console.log(selected.dataset.id);
-        const selected_slide = selected.dataset.id;
+      // hashNavigation: true,
+      init: true,
+      speed: 700,
+      loop: false,
+      spaceBetween: 100,
+      autoHeight: true, //enable auto height
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
       },
-      slideChange () {
-        // const selected = document.querySelector(".swiper-slide-active");
-        // // console.log(selected.dataset.id);
-        // selected_slide = selected.dataset.id;
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      on: {
+        init () {
+          console.log('swiper initialized');
+          console.log('activeIndex init', this.activeIndex)
+        },
+        slideChange () {
+          const selected = document.querySelector(".swiper-slide-active");
+          // console.log('hash2', parseInt(selected.dataset.hash));
+          console.log('activeIndex active', this.activeIndex)
 
-        if ( mySwiper.activeIndex > mySwiper.previousIndex ) {
-          console.log('1. swipe to the left');
-          console.log('2. test: reject_path(pet.user)');
-          window.location.href = '<%= reject_path(@pets.first.user) %>';
-          // const s = document.querySelector(`[data-swiper-slide-index='${mySwiper.activeIndex}']`);
-          console.log('3. same behaviour as clicking reject button');
-          // const s = document.querySelector(`[data-swiper-slide-index='${mySwiper.activeIndex}']`).
-          // s.style.display = "none";
-        } else {
-          console.log('4. swipe to the right');
-          window.location.href = '<%= accept_path(@pets.first.user) %>';
-          console.log('5. test: accept_path(pet.user)');
-          // document.getElementById('edit').click();
-          console.log('6. same behaviour as clicking add button');
+
+          // document.querySelector('.prepend-2-slides').addEventListener('click', function (e) {
+          //       e.preventDefault();
+          //       swiper.virtual.prependSlide([
+          //         '<div class="swiper-slide">Slide ' + (--prependNumber) + '</div>',
+          //         '<div class="swiper-slide">Slide ' + (--prependNumber) + '</div>'
+          //         ]);
+          //         'Slide ' + (--prependNumber),
+          //         'Slide ' + (--prependNumber)
+          //       ]);
+          //     });
+          // document.getElementById('reject-link').click();
+          // const dogCard = document.querySelector(`[data-hash="${selected.dataset.hash}"]`);
+          // console.log('dogCard', dogCard)
+          // dogCard.querySelector('#reject-link').click();
+          // document.getElementById('reject').click();
+          // const selected = document.querySelector(".swiper-slide-active");
+          // // console.log(selected.dataset.id);
+          // selected_slide = selected.dataset.id;
+          // if ( mySwiper.activeIndex > mySwiper.previousIndex ) {
+          //   console.log('1. swipe to the left');
+          //   console.log('2. test: reject_path(pet.user)');
+          //   // const s = document.querySelector(`[data-swiper-slide-index='${mySwiper.activeIndex}']`);
+          //   console.log('3. same behaviour as clicking reject button');
+          //   // const s = document.querySelector(`[data-swiper-slide-index='${mySwiper.activeIndex}']`).
+          //   // s.style.display = "none";
+          // } else {
+          //   console.log('4. swipe to the right');
+          //   console.log('5. test: accept_path(pet.user)');
+          //   // document.getElementById('edit').click();
+          //   console.log('6. same behaviour as clicking add button');
+          //   // mySwiper.removeSlide(mySwiper.activeIndex);
+          // }
+            // console.log('active index', mySwiper.activeIndex);
+          // if (mySwiper.activeIndex === mySwiper.previousIndex) {
+          //   console.log('this is the last card');
+          // } else if ( mySwiper.previousIndex > mySwiper.activeIndex ) {
+          //   console.log('4. swipe to the right');
+          //   console.log('5. test: accept_path(pet.user)');
+          //   console.log('active index', mySwiper.activeIndex);
+          // } else {
+          //   console.log('1. swipe to the left');
+          //   console.log('2. test: reject_path(pet.user)');
+          // }
+          // if (mySwiper.activeIndex === 0) {
+          //   console.log('cannot swipe to right');
+          //   console.log(mySwiper.activeIndex);
+          // } else if (mySwiper.activeIndex > mySwiper.previousIndex) {
+          //   console.log('reject');
+          // } else {
+          //   console.log('accept');
+          // }
+          // console.log('active index', mySwiper.activeIndex);
+          // console.log('prev index', mySwiper.previousIndex);
           // mySwiper.removeSlide(mySwiper.activeIndex);
+          // mySwiper.removeSlide(mySwiper.activeIndex);
+        },
+        slidePrevTransitionEnd () {
+          console.log('transistion accept end') // accept request
+          const selected = document.querySelector(".swiper-slide-active");
+          const dogCard = document.querySelector(`[data-hash="${selected.dataset.hash}"]`);
+
+          console.log('dogCard accept', dogCard)
+          dogCard.querySelector('#accept-link').click();
+        },
+        slideNextTransitionEnd() {
+          console.log('transistion reject end')// reject request
+          const selected = document.querySelector(".swiper-slide-active");
+          const dogCard = document.querySelector(`[data-hash="${selected.dataset.hash}"]`);
+
+          console.log('dogCard reject', dogCard)
+          dogCard.querySelector('#reject-link').click();
+          // .removeSlide(slideIndex);
+          console.log(this.activeIndex)
+          console.log('remove stuff', this.activeIndex - 1);
+          removeStuff() // last slide is always 0
         }
       }
-    },
-  });
+    });
 
-  mySwiper.init();
-  // var mySwiper2 = document.querySelector('.swiper-container').swiper
-    // var mySwiper2 = document.querySelector('.swiper-container').swiper
-  document.querySelectorAll(".button-expand").forEach(button => {
-  button.addEventListener("click", (event) => {
-  document.querySelector("body").classList.toggle("expanded")
-  });
-  })
-
-
+    const removeStuff = () => {
+      mySwiper.removeSlide(0);
+    };
 </script>
+
+
+
