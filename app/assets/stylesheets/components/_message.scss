@@ -1,6 +1,6 @@
 .messages {
   font-size: 14px;
-  color: #868686;
+  color: black;
   background-color: #ffffff;
   padding: 20px;
   border: 1px solid #ececec;
@@ -16,12 +16,12 @@
   &.right {
     flex-direction: row-reverse;
     .message-content {
-      background-color: #F2F9FC;
+      background-color: $zomp;
     }
   }
 }
 .message-content {
-  background-color: #F7F7F7;
+  background-color: $bitter;
   border-radius: 3px;
   margin: 0 10px;
   padding: 11px 10px 8px 10px;

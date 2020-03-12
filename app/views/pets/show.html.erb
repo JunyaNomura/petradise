@@ -1,5 +1,5 @@
 <div class="myfriends-title" id="my-pet-picture-photo">
-  <h1>My Pet Pictures</h1>
+  <h1><%= current_user.pet.name %> Pictures</h1>
 </div>
 <div class="button-chat" id="upload-button">Upload Photo</div>
 <%= simple_form_for(@pet) do |f| %>

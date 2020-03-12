@@ -1,5 +1,5 @@
 <div class="myfriends-title">
-  <h1> My Chats</h1>
+  <h1> <%= current_user.pet.name %> Chats</h1>
 </div>
 <%#= cl_image_tag(current_user.friends.first.pet.photo.key, class: "avatar-chat-room") %>
 <div class="chat-list">
