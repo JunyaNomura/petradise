@@ -155,7 +155,6 @@ doug.save!
   pet.save!
   rand(10..30).times do
     Rating.create!(
-
       stars: rand(0..5),
       comments: ["Our dogs were really compatible with each other", "Very active dog", "Our dogs weren't compatible", "Very quiet dog", "Our dogs both like to run outside"].sample,
       user: doug,
@@ -475,6 +474,7 @@ yuka.save!
   end
 end
 puts "creating antonio"
+
 antonio = User.create!(
   first_name: "Antonio",
   last_name: "Sanchez",
@@ -502,6 +502,7 @@ antonio.save!
   pet.photos.attach(io: file, filename: "pepa2.jpg", content_type: 'image/jpg')
   file = File.open(File.join(Rails.root,'app','assets','images','pepa3.jpg'))
   pet.photos.attach(io: file, filename: "pepa3.jpg", content_type: 'image/jpg')
+  
   pet.save!
   rand(10..30).times do
     Rating.create!(
@@ -530,7 +531,7 @@ junya.save!
     name: 'Pepper',
     user: junya,
     gender: "Female",
-    age: 15,
+    age: 10,
     breed: "maltese",
     description: "My dog is very cute",
     personality_list: ["Active", "Confident", "Independent"].sample(3),

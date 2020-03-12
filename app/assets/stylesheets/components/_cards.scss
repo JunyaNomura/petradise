@@ -200,6 +200,13 @@ body.expanded {
     margin-top: -17px;
     height: 100%;
   }
+
+  .first-reviews {
+    background-color: white;
+      i {
+        font-size: 18px;
+      }
+  }
 }
 .card-product-picture-info {
   // display: flex;
@@ -385,8 +392,15 @@ body.expanded {
 
 }
 
+.show-all-reviews {
+  margin-left: 16px;
+  p {
+    font-size: 32px;
+  }
+}
+
 .show-all-reviews strong {
-      border-bottom: 1px solid;
+  border-bottom: 1px solid;
 }
 
 .hidden {
