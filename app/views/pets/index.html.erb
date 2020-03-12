@@ -65,6 +65,47 @@
                 <p> <%= pet.description %>  </p>
               </div>
             </div>
+            <div class="show-all-reviews">
+              <p><strong>Show all reviews</strong></p>
+              <p>Owner Name:</p>
+              <p>
+                <%= current_user.first_name %>
+                <%= current_user.last_name %>
+              </p>
+              <% if pet.ratings.any? %>
+              <div class="first-reviews">
+              <% pet.ratings.first(5).each do |rating| %>
+                <p>Ratings:</p>
+                  <p><% (pet.rating).times do %>
+                    <i class="fas fa-star"></i>
+                  <% end %>
+                  <% (5 - pet.rating).times do %>
+                    <i class="far fa-star"></i>
+                  <% end %>
+                  </p>
+                  <p>Comments:</p>
+                  <p><%= rating.comments %></p>
+                <% end %>
+                </div>
+                <div class="show-all-button button-chat">
+                  Show all reviews
+                </div>
+                <div class="remaining-reviews hidden">
+                  <% pet.ratings.last(pet.ratings.count-5).each do |rating| %>
+                <p>Ratings:</p>
+                  <p><% (pet.rating).times do %>
+                    <i class="fas fa-star"></i>
+                  <% end %>
+                  <% (5 - pet.rating).times do %>
+                    <i class="far fa-star"></i>
+                  <% end %>
+                  </p>
+                  <p>Comments:</p>
+                  <p><%= rating.comments %></p>
+                <% end %>
+                </div>
+              <% end %>
+            </div>
           </div>
         <% end %>
         <div class="swiper-slide"></div>
@@ -126,4 +167,13 @@
   document.querySelector("body").classList.toggle("non-scroll")
   });
   })
+
+  document.querySelector('.show-all-button').addEventListener('click', () => {
+ document.querySelector('.remaining-reviews').classList.remove('hidden')
+})
+
+    document.querySelector('.show-all-button').addEventListener('click', (event) => {
+ document.querySelector('.show-all-button').classList.toggle
+})
 </script>
+

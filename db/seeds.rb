@@ -77,6 +77,19 @@ pet_urls = {
   10 => "https://images.pexels.com/photos/2945541/pexels-photo-2945541.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
 }
 
+breed_name = {
+1 => "Alaskan mamulate",
+2 => "Chiwawa",
+3 => "Akita",
+4 => "Poodle",
+5 => "Poodle",
+6 => "Labrador Retriver",
+7 => "Pug",
+8 => "Pug",
+9 => "Blue Lacy",
+10 => "Chiwawa"
+}
+
 User.all.each_with_index do |user, index|
   p number = index + 1
   url = pet_urls[number]
@@ -88,9 +101,11 @@ User.all.each_with_index do |user, index|
       user: user,
       gender: ["male", "female"].sample,
       age: rand(0..18),
-      breed: Faker::Creature::Dog.breed,
-      description: ["My dog doesn't like grass", "My dog likes to stay indoors", "My dog likes flowers", "My dog is runs super fast", "My dog likes to sleep all day long", "My dog like to eat my food", "My dog likes to eat leftover food", "My dog is very smart"].sample
-    )
+      breed: breed_name[number],
+      description: ["My dog doesn't like grass", "My dog likes to stay indoors", "My dog likes flowers", "My dog is runs super fast", "My dog likes to sleep all day long", "My dog like to eat my food", "My dog likes to eat leftover food", "My dog is very smart"].sample,
+      personality_list: ["Shy", "Active", "Confident", "Independent", "Happy", "Adaptable"].sample(3),
+      preference_list: ["Indoor", "Active", "Outdoor", "Quiet", "Adaptable","Dogpark", "Running", "Relaxing", "Independent", "Likes Dog Restaurant"].sample(3)
+      )
     file = URI.open(url)
     pet.photos.attach(io: file, filename: "pet_#{number}.jpg", content_type: 'image/jpg')
     file = URI.open(pet_urls[number + 1 % 10])
@@ -102,7 +117,6 @@ User.all.each_with_index do |user, index|
     # pet.save!
     rand(1..3).times do
       Rating.create!(
-
         stars: rand(0..5),
         comments: ["Our dogs were really compatible with each other", "Very active dog", "Our dogs weren't compatible", "Very quiet dog", "Our dogs both like to run outside"].sample,
         user: user,
@@ -113,52 +127,75 @@ User.all.each_with_index do |user, index|
 end
 
 antonio = User.create!(
-  first_name: "Antonio",
-  last_name: "Sanchez",
-  location: "Musashikosugi",
-  email: "antonio.sanchez@lewagon.com",
-  password: "123456"
-)
-file = File.open(File.join(Rails.root,'app','assets','images','antonio.jpg'))
-antonio.photo.attach(io: file, filename: "antonio.jpg", content_type: 'image/jpg')
-antonio.save!
-1.times do
-  pet = Pet.create!(
-    name: 'Pepa',
-    user: antonio,
-    gender: "female",
-    age: 10,
-    breed: Faker::Creature::Dog.breed,
-    description: "My dog doesn't like grass"
-  )
-  file = File.open(File.join(Rails.root,'app','assets','images','pepa.jpg'))
-  pet.photos.attach(io: file, filename: "pepa.jpg", content_type: 'image/jpg')
-  pet.save!
-end
+    first_name: "Antonio",
+    last_name: "Sanchez",
+    location: "Musashikosugi",
+    email: "antonio.sanchez@lewagon.com",
+    password: "123456"
+    )
+    file = File.open(File.join(Rails.root,'app','assets','images','antonio.jpg'))
+    antonio.photo.attach(io: file, filename: "antonio.jpg", content_type: 'image/jpg')
+    antonio.save!
+    1.times do
+    pet = Pet.create!(
+      name: 'Pepa',
+      user: antonio,
+      gender: "female",
+      age: 10,
+      breed: "Street Dog",
+      description: "My dog doesn't like grass",
+      personality_list: ["Active", "Confident", "Independent"].sample(3),
+      preference_list: ["Active", "Outdoor", "Quiet"].sample(3)
+      )
+    file = File.open(File.join(Rails.root,'app','assets','images','pepa.jpg'))
+    pet.photo.attach(io: file, filename: "pepa.jpg", content_type: 'image/jpg')
+    pet.save!
+          rand(10..30).times do
+        Rating.create!(
+
+         stars: rand(0..5),
+         comments: ["Our dogs were really compatible with each other", "Very active dog", "Our dogs weren't compatible", "Very quiet dog", "Our dogs both like to run outside"].sample,
+         user: antonio,
+         pet: pet
+         )
+      end
+    end
 
 junya= User.create!(
-  first_name: "Junya",
-  last_name: "Nomura" ,
-  location: "Azabu",
-  email: "junya.nomura@lewagon.com",
-  password: "123456"
-)
-file = File.open(File.join(Rails.root,'app','assets','images','junya.jpg'))
-junya.photo.attach(io: file, filename: "junya.jpg", content_type: 'image/jpg')
-antonio.save!
-# junya.photo.attach())
-junya.save!
-1.times do
-  pet = Pet.create!(
-    name: 'Pepper',
-    user: junya,
-    gender: "male",
-    age: 15,
-    breed: Faker::Creature::Dog.breed,
-    description: "My dog doesn't like grass"
-  )
-  file = File.open(File.join(Rails.root,'app','assets','images','dog27.jpg'))
-  pet.photos.attach(io: file, filename: "dog27.jpg", content_type: 'image/jpg')
-  pet.save!
-end
+    first_name: "Junya",
+    last_name: "Nomura" ,
+    location: "Azabu",
+    email: "junya.nomura@lewagon.com",
+    password: "123456"
+    )
+ file = File.open(File.join(Rails.root,'app','assets','images','junya.jpg'))
+    junya.photo.attach(io: file, filename: "junya.jpg", content_type: 'image/jpg')
+    antonio.save!
+    # junya.photo.attach())
+    junya.save!
+    1.times do
+    pet = Pet.create!(
+      name: 'Pepper',
+      user: junya,
+      gender: "male",
+      age: 15,
+      breed: "maltese",
+      description: "My dog doesn't like grass",
+      personality_list: ["Active", "Confident", "Independent"].sample(3),
+      preference_list: ["Active", "Outdoor", "Quiet"].sample(3)
+      )
+    file = File.open(File.join(Rails.root,'app','assets','images','dog27.jpg'))
+    pet.photo.attach(io: file, filename: "dog27.jpg", content_type: 'image/jpg')
+    pet.save!
+              rand(10..30).times do
+        Rating.create!(
+
+         stars: rand(0..5),
+         comments: ["Our dogs were really compatible with each other", "Very active dog", "Our dogs weren't compatible", "Very quiet dog", "Our dogs both like to run outside"].sample,
+         user: junya,
+         pet: pet
+         )
+      end
+    end
+
 puts "Finished"

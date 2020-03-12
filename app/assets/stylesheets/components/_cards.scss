@@ -385,6 +385,14 @@ body.expanded {
 
 }
 
+.show-all-reviews strong {
+      border-bottom: 1px solid;
+}
+
+.hidden {
+  display: none;
+}
+
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
   .cards {
