@@ -71,9 +71,15 @@ class UsersController < ApplicationController
         lng: user.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { user: user }),
         image_url: helpers.cl_image_path(user.pet.photos.first.key),
-        image_user: helpers.cl_image_path(current_user.pet.photos.first.key),
       }
     end
+    user_marker = {
+      lat: current_user.latitude,
+        lng: current_user.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { user: current_user }),
+        image_url: helpers.cl_image_path(current_user.pet.photos.first.key),
+    }
+    @markers << user_marker
   end
 
   def chats
@@ -88,3 +94,5 @@ class UsersController < ApplicationController
     end.reverse
   end
 end
+
+

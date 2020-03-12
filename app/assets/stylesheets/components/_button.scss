@@ -9,11 +9,17 @@
 .reject {
   color: $navbar-orange;
   padding-left: 0;
+  margin-right: 8px;
 }
 
 .logo {
   width: 100px;
   height: 100px;
+}
+
+.logo2 {
+ width: 50px;
+ height: 50px;
 }
 
 .btn2 {
@@ -108,7 +114,7 @@ button {
 
 button img {
   display: block;
-  
+
 }
 .button-chat {
   background-color: $green2;
@@ -129,4 +135,7 @@ button img {
   margin-right: 16px;
 }
 
+#upload-button {
+  margin: 0px 8px;
+}
 

@@ -76,17 +76,33 @@
         }
     }
     .dog-rating {
+      display: flex;
       position: absolute;
       bottom: 0px;
       left: 0px;
       font-size: 26px;
       background-color: white;
       width: 100%;
+      padding-top: 8px;
+      align-items: center;
         .fas {
           color:$green2;
+          margin-left: 4px;
+          font-size: 22px;
+          transform: rotate(135deg);
         }
-        .far {
+        .boni {
           color:$navbar-orange;
+          opacity: 0.3;
+          margin-left: 4px;
+          font-size: 22px;
+          transform: rotate(135deg);
+        }
+        span {
+          margin-left: 4px;
+          font-size: 20px;
+          color: grey;
+          margin-bottom: 16px;
         }
     }
     .card-product-picture-info-name {
@@ -117,7 +133,7 @@
     p {
       margin-top: 0;
       margin-bottom: 1rem;
-      font-size: 32px;
+      font-size: 18px;
       /* color: white; */
       /* color: rgba(11, 98, 67, 0.8); */
       padding: 4px 16px;
@@ -127,7 +143,7 @@
     i {
       margin-top: 0;
       margin-bottom: 1rem;
-      font-size: 32px;
+      font-size: 18px;
       /* color: white; */
       /* color: rgba(11, 98, 67, 0.8); */
       padding: 4px 16px;
@@ -153,6 +169,12 @@
           border-bottom: 1px solid;
         }
     }
+}
+
+.back-to-home-button a {
+  text-decoration: none;
+  color: $black;
+  background-color: $black;
 }
 
 // .card-information-dog {
@@ -201,13 +223,50 @@ body.expanded {
     height: 100%;
   }
 
+  // .first-reviews-rating {
+  //   border-top: 2px groove black;
+  //   margin-right: 16px;
+  // }
+  .remaining-reviews {
+    .fas {
+      color:$green2;
+      margin-left: 4px;
+      transform: rotate(135deg);
+    }
+    .boni {
+      color:$navbar-orange;
+      opacity: 0.3;
+      transform: rotate(135deg);
+    }
+    i {
+        font-size: 12px;
+      }
+      .remaining-reviwes-p {
+        border-top: 2px groove black;
+      }
+  }
   .first-reviews {
     background-color: white;
+      .first-reviews-p {
+        border-top: 2px groove black;
+        margin-right: 16px;
+      }
+      .fas {
+        color:$green2;
+        margin-left: 4px;
+        transform: rotate(135deg);
+      }
+      .boni {
+        color:$navbar-orange;
+        opacity: 0.3;
+        transform: rotate(135deg);
+      }
       i {
-        font-size: 18px;
+        font-size: 12px;
       }
   }
 }
+
 .card-product-picture-info {
   // display: flex;
   // width: 100%;
@@ -295,9 +354,9 @@ body.expanded {
     /* justify-content: space-between; */
       align-items: center;
       background: $white;
-      border-radius: 4px;
+      border-radius: 25px;
       height: 50px;
-      width: 90%;
+      width: 50%;
       box-shadow: 0 1px 2px rgba(0,0,0,0.2);
       // margin-top: 8px;
       margin: 0 auto;
@@ -337,6 +396,23 @@ body.expanded {
 .tab-button-chat {
   text-align: center;
   margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+   .button-chat {
+    font-size: 16px;
+    margin: 0 8px;
+    width: 30%;
+    flex: 100%;
+   }
+   .tab-button-chat-i {
+      display: flex;
+      // width: 30%;
+      flex: 1;
+        .fa-bone {
+          transform: rotate(135deg);
+        }
+   }
 }
 .card-dog-info {
   display: flex;
@@ -351,6 +427,9 @@ body.expanded {
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   text-align: center;
   color: $navbar-orange;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .pet-info {
@@ -365,7 +444,8 @@ body.expanded {
 .show-pet-card {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 16px;
+  grid-gap: 12px;
+  margin: 0 8px;
     .show-pet-card-card {
       position: relative;
       background: $navbar-orange;
@@ -385,6 +465,7 @@ body.expanded {
     }
     .show-pet-card-images {
       border-radius: 16px;
+      width: 100%;
     }
 }
 #pet_photos {
@@ -395,7 +476,12 @@ body.expanded {
 .show-all-reviews {
   margin-left: 16px;
   p {
-    font-size: 32px;
+    font-size: 18px;
+  }
+  h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 16px;
   }
 }
 
