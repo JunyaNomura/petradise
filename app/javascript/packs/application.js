@@ -39,6 +39,37 @@ initSweetalert('#sweet-alert', {
   link.click()
 });
 
+initSweetalert('#sweet-alert-matched', {
+  title: "Matched!!",
+  text: "Your pet seems to have been matched with this pet!!",
+  icon: "success",
+  buttons: {
+    cancel: {
+      text: "Keep swiping",
+      value: null,
+      visible: true,
+      closeModal: true
+    },
+    confirm: {
+      text: "Check my friend",
+      value: true,
+      visible: true,
+      closeModal: true
+    }
+  }
+}, (value) => {
+  if (value) {
+    console.log("going to my friend page");
+    document.querySelector("#btn-my-friend a").click();
+  } else {
+    console.log("skip: closing the modal");
+    document.querySelector("#btn-like a").click();
+  }
+  // const link = document.querySelector('#button-log');
+  // link.click()
+});
+
+
 
 scrollLastMessageIntoView = () => {
   const messages = document.querySelectorAll('.message');
@@ -47,7 +78,5 @@ scrollLastMessageIntoView = () => {
 }
 
 initStarRating();
-
-
 
 
