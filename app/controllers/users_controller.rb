@@ -56,12 +56,15 @@ class UsersController < ApplicationController
   end
 
   def map
+    park = User.near('Park', 1)
     @users = current_user.friends.geocoded
     @markers = @users.map do |user|
       {
         lat: user.latitude,
         lng: user.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { user: user })
+        infoWindow: render_to_string(partial: "info_window", locals: { user: user }),
+        image_url: helpers.cl_image_path(user.pet.photos.first.key),
+        image_user: helpers.cl_image_path(current_user.pet.photos.first.key),
       }
     end
   end

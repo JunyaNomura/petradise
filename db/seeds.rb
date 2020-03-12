@@ -64,7 +64,6 @@ puts "done"
 puts "Creating Pets and ratings"
 
 pet_urls = {
-  0 => "https://images.pexels.com/photos/2945541/pexels-photo-2945541.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
   1 => "https://images.pexels.com/photos/3671235/pexels-photo-3671235.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
   2 => "https://images.pexels.com/photos/3190736/pexels-photo-3190736.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
   3 => "https://images.pexels.com/photos/3812207/pexels-photo-3812207.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
@@ -108,11 +107,7 @@ User.all.each_with_index do |user, index|
       )
     file = URI.open(url)
     pet.photos.attach(io: file, filename: "pet_#{number}.jpg", content_type: 'image/jpg')
-    file = URI.open(pet_urls[number + 1 % 10])
-    pet.photos.attach(io: file, filename: "pet_#{number}_2.jpg", content_type: 'image/jpg')
-    file = URI.open(pet_urls[number + 2 % 10])
-    pet.photos.attach(io: file, filename: "pet_#{number}_3.jpg", content_type: 'image/jpg')
-    pet.save!
+
     # pet.photo.attach(io: file, filename: "#{pet_name}.jpg", content_type: 'image/jpg')
     # pet.save!
     rand(10..30).times do
@@ -148,7 +143,7 @@ antonio = User.create!(
       preference_list: ["Active", "Outdoor", "Quiet"].sample(3)
       )
     file = File.open(File.join(Rails.root,'app','assets','images','pepa.jpg'))
-    pet.photo.attach(io: file, filename: "pepa.jpg", content_type: 'image/jpg')
+    pet.photos.attach(io: file, filename: "pepa.jpg", content_type: 'image/jpg')
     pet.save!
           rand(10..30).times do
         Rating.create!(
@@ -185,7 +180,7 @@ junya= User.create!(
       preference_list: ["Active", "Outdoor", "Quiet"].sample(3)
       )
     file = File.open(File.join(Rails.root,'app','assets','images','dog27.jpg'))
-    pet.photo.attach(io: file, filename: "dog27.jpg", content_type: 'image/jpg')
+    pet.photos.attach(io: file, filename: "dog27.jpg", content_type: 'image/jpg')
     pet.save!
               rand(10..30).times do
         Rating.create!(
