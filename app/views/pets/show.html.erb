@@ -1,23 +1,30 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-4 offset-sm-4" id="show-dog">
-      <%= @pet.name %>
-      <%= @pet.age %>
-      <%= @pet.breed %>
-      <%# @related_pets.each do |r| %>
-        <%#= r.name %>
-        <%# end %>
-        <% if @pet.rating.blank? %>
-          <p><%= link_to "rate pet", new_pet_rating_path(@pet) %></p>
-        <% else %>
-          <p><% (@pet.rating).times do %>
-              <i class="fas fa-star"></i>
-            <% end %>
-            <% (5 - @pet.rating).times do %>
-              <i class="far fa-star"></i>
-            <% end %></p>
-          <%= @pet.rating %>
+<div class="myfriends-title" id="my-pet-picture-photo">
+  <h1>My Pet Pictures</h1>
+</div>
+<div class="button-chat" id="upload-button">Upload Photo</div>
+<%= simple_form_for(@pet) do |f| %>
+  <%= f.input :photos, as: :file, label: false, input_html: { multiple: true } %>
+<% end %>
+<div class="show-pet-card">
+  <% @pet.photos.each do |photo| %>
+    <div class="show-pet-card-card">
+      <%=cl_image_tag(photo.key, class: "show-pet-card-images", height: 150, width:100, crop: :fill)  %>
+      <div class="show-pet-card-delete">
+        <%= link_to delete_image_attachment_collection_path(photo.signed_id),
+                  method: :delete,
+                  data: { confirm: 'Are you sure?' }, class: "button-photo-delete" do %>
+          <i class="fas fa-minus-square"></i>
         <% end %>
       </div>
     </div>
-  </div>
+  <% end %>
+</div>
+<script>
+  const uploadButton = document.querySelector("#upload-button")
+  const petPhotos = document.querySelector("#pet_photos");
+  const form = document.querySelector(".edit_pet");
+  petPhotos.addEventListener("change", () => form.submit())
+  uploadButton.addEventListener("click", () => {
+    petPhotos.click()
+  });
+</script>

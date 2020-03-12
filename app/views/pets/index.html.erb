@@ -1,76 +1,121 @@
-<div class="cards-category-index">
-  <div class="swiper-container animated zoomIn faster">
-    <div class="swiper-wrapper">
-      <%@pets.each do |pet|%>
-        <div class="swiper-slide" >
-          <!-- <div class="col-12 col-xs-12 col-sm-4 offset-sm-4"> -->
-          <!-- <div class="card-product"> -->
-          <!-- <div class="first-half"> -->
-          <!-- <div class="card-product-picture-info "> -->
-          <div class="card-product-picture">
-            <% if pet.photo.attached? %>
-              <%= cl_image_tag(pet.photo.key, class: "picture-dog", width: 300, height: 300, crop: :fill) %>
-            <% else %>
-              <%#= cl_image_tag("my_pet", class: "picture-dog", width: 300, height: 300, crop: :fill) %>
-            <% end %>
-            <div class="card-product-value">
-              <p><%= current_user.pet.compatibilty(pet) %>%</p>
+<% if current_user.pet %>
+  <div class="cards-category-index">
+    <div class="swiper-container animated zoomIn faster">
+      <div class="swiper-wrapper">
+        <%@pets.each do |pet|%>
+          <div class="swiper-slide" >
+            <div class="card-product-picture">
+              <div class="photo-slideshow">
+                <div class="swiper-wrapper">
+                  <% if pet.photos.attached? %>
+                    <%  pet.photos.each do |photo|%>
+                      <div class="swiper-slide" >
+                        <%= cl_image_tag(photo.key, class: "picture-dog", width: 1000, height: 1000, crop: :fill) %>
+                      </div>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+              <div class="card-product-value">
+                <p><%= current_user.pet.compatibilty(pet) %>%</p>
+              </div>
+              <div class="card-product-picture-info-name">
+                <p> <%= pet.name %> </p>
+              </div>
+              <div class="dog-rating">
+                <% if pet.rating.blank? %>
+                  <p><%= pet.rating %>  </p>
+                <% else %>
+                  <p><% (pet.rating).times do %>
+                      <i class="fas fa-star"></i>
+                    <% end %>
+                    <% (5 - pet.rating).times do %>
+                      <i class="far fa-star"></i>
+                    <% end %></p>
+                <% end %>
+              </div>
+              <!-- <div class="button-expand btn btn-primary" style="position: absolute; bottom: 10px; right: 10px;">Expand</div> -->
+              <%= link_to "#", class: "button-expand", id: "button-index-expand" do %>
+                <i class="fas fa-info-circle"></i>
+              <% end %>
             </div>
-            <div class="card-product-picture-info-name">
-              <p> <%= pet.name %> </p>
+            <div class="card-information-dog">
+              <div class="card-information-dog-persnpref">
+                <div class="card-information-dog-namenbreed">
+                  <p><strong><%= pet.breed %></strong></p>
+                  <p><strong><%= pet.age %></strong>
+                    <% if pet.gender == "male" %>
+                      <i class="fas fa-mars"></i>
+                    <% else %>
+                      <i class="fas fa-venus"></i>
+                    <% end %>
+                  </p>
+                </div>
+                <div class="card-information-dog-personalities">
+                  <p><strong>Personality</strong></p>
+                  <p><%= pet.personality_list %></p>
+                </div>
+                <div class="card-information-dog-preferences">
+                  <p><strong>Preferences</strong></p>
+                  <p><%= pet.preference_list %></p>
+                </div>
+              </div>
+              <div class="card-information-dog-description">
+                <p><strong>Description</strong></p>
+                <p> <%= pet.description %>  </p>
+              </div>
             </div>
-            <div class="dog-rating">
-              <% if pet.rating.blank? %>
-                <p><%= pet.rating %>  </p>
-              <% else %>
-                <p><% (pet.rating).times do %>
+            <div class="show-all-reviews">
+              <p><strong>Show all reviews</strong></p>
+              <p>Owner Name:</p>
+              <p>
+                <%= current_user.first_name %>
+                <%= current_user.last_name %>
+              </p>
+              <% if pet.ratings.any? %>
+              <div class="first-reviews">
+              <% pet.ratings.first(5).each do |rating| %>
+                <p>Ratings:</p>
+                  <p><% (pet.rating).times do %>
                     <i class="fas fa-star"></i>
                   <% end %>
                   <% (5 - pet.rating).times do %>
                     <i class="far fa-star"></i>
-                  <% end %></p>
+                  <% end %>
+                  </p>
+                  <p>Comments:</p>
+                  <p><%= rating.comments %></p>
+                <% end %>
+                </div>
+                <div class="show-all-button button-chat">
+                  Show all reviews
+                </div>
+                <div class="remaining-reviews hidden">
+                  <% pet.ratings.last(pet.ratings.count-5).each do |rating| %>
+                <p>Ratings:</p>
+                  <p><% (pet.rating).times do %>
+                    <i class="fas fa-star"></i>
+                  <% end %>
+                  <% (5 - pet.rating).times do %>
+                    <i class="far fa-star"></i>
+                  <% end %>
+                  </p>
+                  <p>Comments:</p>
+                  <p><%= rating.comments %></p>
+                <% end %>
+                </div>
               <% end %>
             </div>
-            <!-- <div class="button-expand btn btn-primary" style="position: absolute; bottom: 10px; right: 10px;">Expand</div> -->
-            <%= link_to "#", class: "button-expand", id: "button-index-expand" do %>
-              <i class="fas fa-info-circle"></i>
-            <% end %>
           </div>
-          <div class="card-information-dog">
-            <div class="card-information-dog-persnpref">
-              <div class="card-information-dog-namenbreed">
-                <p><strong><%= pet.breed %></strong></p>
-                <p><strong><%= pet.age %></strong>
-                  <% if pet.gender == "male" %>
-                    <i class="fas fa-mars"></i>
-                  <% else %>
-                    <i class="fas fa-venus"></i>
-                  <% end %>
-                </p>
-              </div>
-              <div class="card-information-dog-personalities">
-                <p><strong>Personality</strong></p>
-                <p><%= pet.personality_list %></p>
-              </div>
-              <div class="card-information-dog-preferences">
-                <p><strong>Preferences</strong></p>
-                <p><%= pet.preference_list %></p>
-              </div>
-            </div>
-            <div class="card-information-dog-description">
-              <p><strong>Description</strong></p>
-              <p> <%= pet.description %>  </p>
-            </div>
-          </div>
-
-        </div>
-      <% end %>
-      <div class="swiper-slide"></div>
+        <% end %>
+        <div class="swiper-slide"></div>
+      </div>
+      <div class="swiper-pagination"></div>
+      <!--       <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div> -->
     </div>
-    <div class="swiper-pagination"></div>
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
   </div>
+
 </div>
 
 
@@ -83,23 +128,21 @@
   <button type="button" class="btn-transparent" id="btn-my-friend"><%= link_to "friend", friends_path(@pets.first.user) %></button>
 </div>
 
-<script>
 
+<% else %>
+  <%= render 'shared/create_pet' %>
+<% end %>
+
+<script>
   var mySwiper = new Swiper('.swiper-container', {
     init: false,
     speed: 700,
     loop: true,
-    spaceBetween: 0,
+    spaceBetween: 100,
     autoHeight: true, //enable auto height
-    // pagination: {
-    //   el: '.swiper-pagination',
-    //   clickable: true,
-    // },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
+    freeModeMomentum: true,
     on: {
+
       init () {
         console.log('swiper initialized');
       },
@@ -118,18 +161,45 @@
       }
     },
   });
-
+  
   mySwiper.init();
+  
+  var photoSlideShow = new Swiper('.photo-slideshow', {
+    init: true,
+    speed: 250,
+    loop: false,
+    spaceBetween: 0,
+    autoHeight: true, //enable auto height
+    // allowTouchMove: false,
+    direction: 'vertical',
+    // wrapperClass: 'slideshow-wrapper',
+    // pagination: {
+    //   el: '.swiper-pagination',
+    //   clickable: true,
+    // },
+    // navigation: {
+    //   nextEl: '.swiper-button-next',
+    //   prevEl: '.swiper-button-prev',
+    // }
+  });
+  
+  // photoSlideShow.init();
   // var mySwiper2 = document.querySelector('.swiper-container').swiper
     // var mySwiper2 = document.querySelector('.swiper-container').swiper
   document.querySelectorAll(".button-expand").forEach(button => {
-    button.addEventListener("click", (event) => {
-      document.querySelector("body").classList.toggle("expanded")
-    });
+
+  button.addEventListener("click", (event) => {
+  document.querySelector("body").classList.toggle("expanded")
+  document.querySelector("body").classList.toggle("non-scroll")
+  });
   })
 
+  document.querySelector('.show-all-button').addEventListener('click', () => {
+ document.querySelector('.remaining-reviews').classList.remove('hidden')
+})
 
+    document.querySelector('.show-all-button').addEventListener('click', (event) => {
+ document.querySelector('.show-all-button').classList.toggle
+})
 </script>
-
-
 
