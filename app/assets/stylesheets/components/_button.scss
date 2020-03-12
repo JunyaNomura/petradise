@@ -64,7 +64,7 @@
   right: 16px;
   i {
     font-size: 40px;
-    color: $gray;
+    color: $green2;
   }
 }
 
@@ -81,5 +81,18 @@
     &:hover {
       text-decoration: none;
       color: white;
-    } 
+    }
+}
+.button-chat {
+  background-color: $green2;
+  padding: 10px;
+  text-decoration: none;
+  text-align: center;
+  color: white;
+  font-size: 24px;
+  border-radius: 8px;
+    &:hover {
+      text-decoration: none;
+      color: white;
+    }
 }
