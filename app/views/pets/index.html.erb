@@ -113,10 +113,11 @@
 <!-- <button id="sweet-alert-matched" class="btn btn-primary">Matched</button> -->
 <button id="sweet-alert-matched" class="btn-transparent">Matched</button>
 <div class="btn-group d-flex justify-content-between">
-  <button type="button" class="btn-transparent" id="btn-nope"><img src="https://res.cloudinary.com/diyszwqhl/image/upload/v1583922785/nope_btn_qz1lsu.png"/><%= link_to "Nope", reject_path(@pets.first.user) %></button>
-  <button type="button" class="btn-transparent" id="btn-like"><img src="https://res.cloudinary.com/diyszwqhl/image/upload/v1583922798/like_btn_jnyyno.png"/><%= link_to "Like", accept_path(@pets.first.user) %></button>
+  <button type="button" id="btn-nope" class="btn-transparent"><img src="https://res.cloudinary.com/diyszwqhl/image/upload/v1583922785/nope_btn_qz1lsu.png"/><%= link_to "Nope", reject_path(@pets.first.user),remote: true %></button>
+  <button type="button" class="btn-transparent" id="btn-like"><img src="https://res.cloudinary.com/diyszwqhl/image/upload/v1583922798/like_btn_jnyyno.png"/><%= link_to "Like", accept_path(@pets.first.user),remote: true %></button>
 </div>
-<button type="button" class="btn-transparent" id="btn-my-friend"><%= link_to "friend", friends_path(@pets.first.user) %></button>
+  <button type="button" class="btn-transparent" id="btn-my-friend"><%= link_to "friend", friends_path %></button>
+
 <% else %>
   <%= render 'shared/create_pet' %>
 <% end %>
@@ -128,6 +129,8 @@
     spaceBetween: 100,
     autoHeight: true, //enable auto height
     freeModeMomentum: true,
+    touchRatio: 0.8,
+    shortSwipes: false,
     on: {
   
       init () {
@@ -140,6 +143,7 @@
         } else {
           console.log('swipe to the right');
           <% if @pets.first.user.match?(current_user) %>
+            document.querySelector("#btn-like a").click();
             document.querySelector('#sweet-alert-matched').click();
           <% else %>
             window.location.href = '<%= accept_path(@pets.first.user) %>';
@@ -148,9 +152,9 @@
       }
     },
   });
-  
+
   mySwiper.init();
-  
+
   var photoSlideShow = new Swiper('.photo-slideshow', {
     init: true,
     speed: 250,
@@ -169,7 +173,7 @@
     //   prevEl: '.swiper-button-prev',
     // }
   });
-  
+
   // photoSlideShow.init();
   // var mySwiper2 = document.querySelector('.swiper-container').swiper
     // var mySwiper2 = document.querySelector('.swiper-container').swiper
@@ -180,7 +184,7 @@
   document.querySelector("body").classList.toggle("non-scroll")
   });
   })
-  
+
   document.querySelector('.show-all-button').addEventListener('click', () => {
   document.querySelector('.remaining-reviews').classList.remove('hidden')
   document.querySelector('.show-all-button').remove()
