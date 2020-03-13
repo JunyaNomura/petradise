@@ -27,11 +27,12 @@
                   <p><%= pet.rating %>  </p>
                 <% else %>
                   <p><% (pet.rating).times do %>
-                      <i class="fas fa-star"></i>
+                      <i class="fas fa-bone"></i>
                     <% end %>
                     <% (5 - pet.rating).times do %>
-                      <i class="far fa-star"></i>
+                      <i class="fas fa-bone boni"></i>
                     <% end %></p>
+                  <span>(<%= pet.ratings.count%>)</span>
                 <% end %>
               </div>
               <!-- <div class="button-expand btn btn-primary" style="position: absolute; bottom: 10px; right: 10px;">Expand</div> -->
@@ -65,43 +66,35 @@
                 <p> <%= pet.description %>  </p>
               </div>
               <div class="show-all-reviews">
-                <p><strong>Show all reviews</strong></p>
-                <p>Owner Name:</p>
-                <p>
-                  <%= current_user.first_name %>
-                  <%= current_user.last_name %>
-                </p>
+                <h3>Reviews and Ratings</h3>
                 <% if pet.ratings.any? %>
                   <div class="first-reviews">
                     <% pet.ratings.first(5).each do |rating| %>
-                      <p>Ratings:</p>
+                      <p class="first-reviews-p"><%= rating.comments %></p>
                       <p>
                         <% (rating.stars).times do %>
-                          <i class="fas fa-star"></i>
+                          <i class="fas fa-bone"></i>
                         <% end %>
                         <% (5 - rating.stars).times do %>
-                          <i class="far fa-star"></i>
+                          <i class="far fa-bone boni"></i>
                         <% end %>
                       </p>
-                      <p>Comments:</p>
-                      <p><%= rating.comments %></p>
                     <% end %>
+                    <!-- </div> -->
                   </div>
                   <div class="show-all-button button-chat" id="button-chat-margin">
                     Show all reviews
                   </div>
                   <div class="remaining-reviews hidden">
                     <% pet.ratings.last(pet.ratings.count-5).each do |rating| %>
-                      <p>Ratings:</p>
+                      <p class="remaining-reviwes-p"><%= rating.comments %></p>
                       <p><% (rating.stars).times do %>
-                          <i class="fas fa-star"></i>
+                          <i class="fas fa-bone"></i>
                         <% end %>
                         <% (5 - rating.stars).times do %>
-                          <i class="far fa-star"></i>
+                          <i class="far fa-bone boni"></i>
                         <% end %>
                       </p>
-                      <p>Comments:</p>
-                      <p><%= rating.comments %></p>
                     <% end %>
                   </div>
                 <% end %>
@@ -116,25 +109,18 @@
       <div class="swiper-button-next"></div> -->
     </div>
   </div>
-
 </div>
-
-
 <!-- <button id="sweet-alert-matched" class="btn btn-primary">Matched</button> -->
 <button id="sweet-alert-matched" class="btn-transparent">Matched</button>
-
 <div class="btn-group d-flex justify-content-between">
-  <button type="button" class="btn-transparent" id="btn-nope"><img src="https://res.cloudinary.com/diyszwqhl/image/upload/v1583922785/nope_btn_qz1lsu.png"/><%= link_to "Nope", reject_path(@pets.first.user) %></button>
-  <button type="button" class="btn-transparent" id="btn-like"><img src="https://res.cloudinary.com/diyszwqhl/image/upload/v1583922798/like_btn_jnyyno.png"/><%= link_to "Like", accept_path(@pets.first.user) %></button>
+  <button type="button" id="btn-nope" class="btn-transparent"><img src="https://res.cloudinary.com/diyszwqhl/image/upload/v1583922785/nope_btn_qz1lsu.png"/><%= link_to "Nope", reject_path(@pets.first.user),remote: true %></button>
+  <button type="button" class="btn-transparent" id="btn-like"><img src="https://res.cloudinary.com/diyszwqhl/image/upload/v1583922798/like_btn_jnyyno.png"/><%= link_to "Like", accept_path(@pets.first.user),remote: true %></button>
 </div>
-  <button type="button" class="btn-transparent" id="btn-my-friend"><%= link_to "friend", friends_path(@pets.first.user) %></button>
-
-
+  <button type="button" class="btn-transparent" id="btn-my-friend"><%= link_to "friend", friends_path %></button>
 
 <% else %>
   <%= render 'shared/create_pet' %>
 <% end %>
-
 <script>
   var mySwiper = new Swiper('.swiper-container', {
     init: false,
@@ -142,7 +128,8 @@
     loop: true,
     spaceBetween: 100,
     autoHeight: true, //enable auto height
-    freeModeMomentum: true,
+    // freeModeMomentum: true,
+    touchRatio: 1.1,
     on: {
 
       init () {
@@ -155,6 +142,7 @@
         } else {
           console.log('swipe to the right');
           <% if @pets.first.user.match?(current_user) %>
+            document.querySelector("#btn-like a").click();
             document.querySelector('#sweet-alert-matched').click();
           <% else %>
             window.location.href = '<%= accept_path(@pets.first.user) %>';

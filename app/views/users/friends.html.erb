@@ -1,5 +1,5 @@
 <div class="myfriends-title">
-  <h1>My Friends</h1>
+  <h1><%= current_user.pet.name %>'s Friends</h1>
 </div>
 <div class="cards">
   <% @friends.each do |friend| %>
@@ -41,11 +41,24 @@
               <p>Owner</p>
               <p><strong> <%= friend.first_name %></strong></p>
             </div>
-            <i class="fas fa-user-slash btn reject" id="sweet-alert-demo"></i>
-            <%= link_to "#", reject_path(friend), id: "block-friend" %>
+            <!-- <i class="fas fa-user-slash btn reject" id="sweet-alert-demo"></i> -->
           </div>
           <div class="tab-button-chat">
-            <%= link_to "Rate the playdate", new_pet_rating_url(@pet), class: "btn btn-primary"  %>
+            <div class="tab-button-chat-i">
+              <%= link_to new_pet_rating_url(@pet), class: "button-chat" do %>
+                <i class="fas fa-bone"></i> Rate
+              <% end %>
+            </div>
+            <div class="tab-button-chat-i">
+              <%= link_to chats_path, class: "button-chat" do%>
+                <i class="fas fa-comment-dots "></i> Chat
+              <% end %>
+            </div>
+            <div class="tab-button-chat-i">
+              <%= link_to map_path, class: "button-chat" do %>
+                <i class="fas fa-map-marker-alt"></i> Map
+              <% end %>
+            </div>
           </div>
         </div>
       </div>

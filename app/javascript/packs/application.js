@@ -40,8 +40,8 @@ initSweetalert('#sweet-alert', {
 });
 
 initSweetalert('#sweet-alert-matched', {
-  title: "Matched!!",
-  text: "Your pet seems to have been matched with this pet!!",
+  title: "Hot Dog!!!!",
+  text: "Your dog seems to have been matched with this dog!! Time to become friends!!!",
   icon: "success",
   buttons: {
     cancel: {
@@ -60,10 +60,11 @@ initSweetalert('#sweet-alert-matched', {
 }, (value) => {
   if (value) {
     console.log("going to my friend page");
+    // document.querySelector('#btn-like a').click();
     document.querySelector("#btn-my-friend a").click();
   } else {
     console.log("skip: closing the modal");
-    document.querySelector("#btn-like a").click();
+    // document.querySelector("#btn-like a").click();
   }
   // const link = document.querySelector('#button-log');
   // link.click()

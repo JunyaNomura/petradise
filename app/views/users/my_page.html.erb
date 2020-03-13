@@ -3,18 +3,17 @@
   <div style="height: 100vh" class="container d-flex flex-column justify-content-between">
     <div class="mp-avatar-pet">
       <% if current_user.pet.photos.attached? %>
-        <%= cl_image_tag( current_user.pet.photos.first.key, class: "avatar-large", heigth:100, width: 100, crop: :fill)%>
+        <%= cl_image_tag( current_user.pet.photos.first.key, class: "avatar-large", heigth:1000, width: 1000, crop: :fill)%>
       <% else %>
         <%= cl_image_tag("my_pet", class: "avatar-large", heigth:100, width: 100, crop: :fill) %>
       <% end %>
-    <div class="back-to-home-button">
-      <%= link_to root_path do  %>
-      <h3> <%= current_user.pet.name %> </h3>
-      <% end %>
-    </div>
+      <div class="back-to-home-button">
+        <%= link_to root_path do  %>
+          <h3> <%= current_user.pet.name %> </h3>
+        <% end %>
+      </div>
       <p><%= current_user.pet.breed %></p>
     </div>
-
     <div class="paw-photo" style="height: 420px; background: url(<%= cl_image_path("paw3_wruzvq", heigth: 300, width: 300, crop: :fill) %>) no-repeat center;">
       <div class="row" >
         <div class="col-3 col-sm-2 offset-md-2" style='margin-top: 5rem;'>
@@ -34,7 +33,7 @@
         </div>
         <div class="col-3 col-sm-2" style='margin-top: 5rem;'>
           <%= link_to edit_pet_path(current_user.pet), class: "btnnn btn3" do  %>
-            <i class="fas fa-paw"></i>
+            <i class="fas fa-dog"></i>
           <% end %>
         </div>
         <div class="button-camera-mp">
@@ -42,7 +41,6 @@
             <i class="fas fa-camera-retro"></i>
           <% end %>
         </div>
-
       </div>
       <div class="d-flex justify-content-center">
       </div>
