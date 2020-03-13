@@ -145,15 +145,23 @@ doug.save!
     age: 6,
     breed: "Chihuahua",
     description: "My dog doesn't like Big dogs",
-    personality_list: ["Shy", "Active", "Confident", "Independent", "Happy", "Adaptable"].sample(3),
-    preference_list: ["Indoor", "Active", "Outdoor", "Quiet", "Adaptable","Dogpark", "Running", "Relaxing", "Independent", "Likes Dog Restaurant"].sample(3)
+    personality_list: ["Shy", "Active", "Confident", "Independent", "Happy", "Adaptable"].sample(4),
+    preference_list: ["Indoor", "Active", "Outdoor", "Quiet", "Adaptable","Dogpark", "Running", "Relaxing", "Independent", "Likes Dog Restaurant"].sample(4)
   )
   file = File.open(File.join(Rails.root,'app','assets','images','chihuaha1.jpeg'))
   pet.photos.attach(io: file, filename: "chihuahua1.jpeg", content_type: 'image/jpeg')
   file = File.open(File.join(Rails.root,'app','assets','images','chihuahua2.jpeg'))
   pet.photos.attach(io: file, filename: "chihuahua2.jpeg", content_type: 'image/jpeg')
   pet.save!
-  rand(10..30).times do
+    rand(1..2).times do
+    Rating.create!(
+      stars: rand(4..5),
+      comments: ["Our dogs were really compatible with each other", "Very active dog", "Our dogs weren't compatible", "Very quiet dog", "Our dogs both like to run outside"].sample,
+      user: doug,
+      pet: pet
+    )
+  end
+  rand(8..28).times do
     Rating.create!(
       stars: rand(0..5),
       comments: ["Our dogs were really compatible with each other", "Very active dog", "Our dogs weren't compatible", "Very quiet dog", "Our dogs both like to run outside"].sample,
@@ -182,7 +190,7 @@ yann.save!
     age: 8,
     breed: "Beagle",
     description: "My dog doesn't like cats",
-    personality_list: ["Shy", "Active", "Confident", "Independent", "Happy", "Adaptable"].sample(3),
+    personality_list: ["Shy", "Active", "Confident", "Independent", "Happy", "Adaptable"].sample(2),
     preference_list: ["Indoor", "Active", "Outdoor", "Quiet", "Adaptable","Dogpark", "Running", "Relaxing", "Independent", "Likes Dog Restaurant"].sample(3)
   )
   file = File.open(File.join(Rails.root,'app','assets','images','beagle1.jpeg'))
@@ -190,16 +198,21 @@ yann.save!
   file = File.open(File.join(Rails.root,'app','assets','images','beagle2.jpeg'))
   pet.photos.attach(io: file, filename: "beagle2.jpeg", content_type: 'image/jpeg')
   pet.save!
-  rand(10..30).times do
+    rand(1..2).times do
     Rating.create!(
-
-
-      stars: rand(0..5),
+      stars: rand(4..5),
       comments: ["Our dogs were really compatible with each other", "Very active dog", "Our dogs weren't compatible", "Very quiet dog", "Our dogs both like to run outside"].sample,
-      user: yann,
+      user: doug,
       pet: pet
     )
-
+  end
+  rand(8..28).times do
+    Rating.create!(
+      stars: rand(0..5),
+      comments: ["Our dogs were really compatible with each other", "Very active dog", "Our dogs weren't compatible", "Very quiet dog", "Our dogs both like to run outside"].sample,
+      user: doug,
+      pet: pet
+    )
   end
 end
 
@@ -217,26 +230,33 @@ james.photo.attach(io: file, filename: "james.jpg", content_type: 'image/jpg')
 james.save!
 1.times do
   pet = Pet.create!(
-    name: 'Olli',
+    name: 'Sebastiana',
     user: james,
     gender: "Female",
     age: 4,
     breed: "Bulldog",
     description: "My dog likes to sleep all day long",
-    personality_list: ["Shy", "Active", "Confident", "Independent", "Happy", "Adaptable"].sample(3),
-    preference_list: ["Indoor", "Active", "Outdoor", "Quiet", "Adaptable","Dogpark", "Running", "Relaxing", "Independent", "Likes Dog Restaurant"].sample(3)
+    personality_list: ["Shy", "Active", "Confident", "Independent", "Happy", "Adaptable"].sample(1),
+    preference_list: ["Indoor", "Active", "Outdoor", "Quiet", "Adaptable","Dogpark", "Running", "Relaxing", "Independent", "Likes Dog Restaurant"].sample(2)
   )
   file = File.open(File.join(Rails.root,'app','assets','images','bulldog1.jpeg'))
   pet.photos.attach(io: file, filename: "bulldog1.jpeg", content_type: 'image/jpeg')
   file = File.open(File.join(Rails.root,'app','assets','images','bulldog2.jpeg'))
   pet.photos.attach(io: file, filename: "bulldog2.jpeg", content_type: 'image/jpeg')
   pet.save!
-  rand(10..30).times do
+    rand(1..4).times do
     Rating.create!(
-
+      stars: rand(1..2),
+      comments: ["Our dogs were really compatible with each other", "Very active dog", "Our dogs weren't compatible", "Very quiet dog", "Our dogs both like to run outside"].sample,
+      user: doug,
+      pet: pet
+    )
+  end
+  rand(9..26).times do
+    Rating.create!(
       stars: rand(0..5),
       comments: ["Our dogs were really compatible with each other", "Very active dog", "Our dogs weren't compatible", "Very quiet dog", "Our dogs both like to run outside"].sample,
-      user: james,
+      user: doug,
       pet: pet
     )
   end
@@ -262,8 +282,8 @@ hiro.save!
     age: 6,
     breed: "Cocker",
     description: "My dog likes to bark at everything",
-    personality_list: ["Shy", "Active", "Confident", "Independent", "Happy", "Adaptable"].sample(3),
-    preference_list: ["Indoor", "Active", "Outdoor", "Quiet", "Adaptable","Dogpark", "Running", "Relaxing", "Independent", "Likes Dog Restaurant"].sample(3)
+    personality_list: ["Shy", "Active", "Confident", "Independent", "Happy", "Adaptable"].sample(5),
+    preference_list: ["Indoor", "Active", "Outdoor", "Quiet", "Adaptable","Dogpark", "Running", "Relaxing", "Independent", "Likes Dog Restaurant"].sample(2)
   )
   file = File.open(File.join(Rails.root,'app','assets','images','cocker1.jpeg'))
   pet.photos.attach(io: file, filename: "cocker1.jpeg", content_type: 'image/jpeg')
@@ -301,7 +321,7 @@ maria.save!
     age: 9,
     breed: "German Shepherd",
     description: "My dog eat flies",
-    personality_list: ["Shy", "Active", "Confident", "Independent", "Happy", "Adaptable"].sample(3),
+    personality_list: ["Shy", "Active", "Confident", "Independent", "Happy", "Adaptable"].sample(2),
     preference_list: ["Indoor", "Active", "Outdoor", "Quiet", "Adaptable","Dogpark", "Running", "Relaxing", "Independent", "Likes Dog Restaurant"].sample(3)
   )
   file = File.open(File.join(Rails.root,'app','assets','images','german1.jpeg'))
@@ -309,12 +329,19 @@ maria.save!
   file = File.open(File.join(Rails.root,'app','assets','images','german2.jpeg'))
   pet.photos.attach(io: file, filename: "german2.jpeg", content_type: 'image/jpeg')
   pet.save!
-  rand(10..30).times do
+  rand(1..4).times do
+  Rating.create!(
+      stars: rand(1..2),
+      comments: ["Our dogs were really compatible with each other", "Very active dog", "Our dogs weren't compatible", "Very quiet dog", "Our dogs both like to run outside"].sample,
+      user: doug,
+      pet: pet
+    )
+  end
+  rand(9..26).times do
     Rating.create!(
-
       stars: rand(0..5),
       comments: ["Our dogs were really compatible with each other", "Very active dog", "Our dogs weren't compatible", "Very quiet dog", "Our dogs both like to run outside"].sample,
-      user: maria,
+      user: doug,
       pet: pet
     )
   end
@@ -379,7 +406,7 @@ tj.save!
     age: 12,
     breed: "Labrador",
     description: "My dog eat grass",
-    personality_list: ["Shy", "Active", "Confident", "Independent", "Happy", "Adaptable"].sample(3),
+    personality_list: ["Shy", "Active", "Confident", "Independent", "Happy", "Adaptable"].sample(4),
     preference_list: ["Indoor", "Active", "Outdoor", "Quiet", "Adaptable","Dogpark", "Running", "Relaxing", "Independent", "Likes Dog Restaurant"].sample(3)
   )
   file = File.open(File.join(Rails.root,'app','assets','images','labrador1.jpeg'))
@@ -387,12 +414,19 @@ tj.save!
   file = File.open(File.join(Rails.root,'app','assets','images','labrador2.jpeg'))
   pet.photos.attach(io: file, filename: "labrador2.jpeg", content_type: 'image/jpeg')
   pet.save!
-  rand(10..30).times do
+  rand(1..4).times do
+  Rating.create!(
+      stars: rand(4..5),
+      comments: ["Our dogs were really compatible with each other", "Very active dog", "Our dogs weren't compatible", "Very quiet dog", "Our dogs both like to run outside"].sample,
+      user: doug,
+      pet: pet
+    )
+  end
+  rand(9..26).times do
     Rating.create!(
-
       stars: rand(0..5),
       comments: ["Our dogs were really compatible with each other", "Very active dog", "Our dogs weren't compatible", "Very quiet dog", "Our dogs both like to run outside"].sample,
-      user: tj,
+      user: doug,
       pet: pet
     )
   end
@@ -419,10 +453,10 @@ trouni.save!
     breed: "Pomeranian",
     description: "My dog likes to spin",
     personality_list: ["Shy", "Active", "Confident", "Independent", "Happy", "Adaptable"].sample(3),
-    preference_list: ["Indoor", "Active", "Outdoor", "Quiet", "Adaptable","Dogpark", "Running", "Relaxing", "Independent", "Likes Dog Restaurant"].sample(3)
+    preference_list: ["Indoor", "Active", "Outdoor", "Quiet", "Adaptable","Dogpark", "Running", "Relaxing", "Independent", "Likes Dog Restaurant"].sample(2)
   )
-  file = File.open(File.join(Rails.root,'app','assets','images','pomeranian2.jpeg'))
-  pet.photos.attach(io: file, filename: "pomeranian2.jpeg", content_type: 'image/jpeg')
+  file = File.open(File.join(Rails.root,'app','assets','images','pomeranian1.jpeg'))
+  pet.photos.attach(io: file, filename: "pomeranian1.jpeg", content_type: 'image/jpeg')
   file = File.open(File.join(Rails.root,'app','assets','images','pomeranian2.jpeg'))
   pet.photos.attach(io: file, filename: "pomeranian2.jpeg", content_type: 'image/jpeg')
   pet.save!
@@ -442,7 +476,7 @@ puts "creating yuka"
 yuka = User.create!(
   first_name: "yuka",
   last_name: "lewagon" ,
-  location: "Oosaki",
+  location: "Shibuya",
   email: "yuka@lewagon.com",
   password: "123456"
 )
@@ -457,7 +491,7 @@ yuka.save!
     age: 7,
     breed: "Pug",
     description: "My dog likes to run all day",
-    personality_list: ["Shy", "Active", "Confident", "Independent", "Happy", "Adaptable"].sample(3),
+    personality_list: ["Shy", "Active", "Confident", "Independent", "Happy", "Adaptable"].sample(4),
     preference_list: ["Indoor", "Active", "Outdoor", "Quiet", "Adaptable","Dogpark", "Running", "Relaxing", "Independent", "Likes Dog Restaurant"].sample(3)
   )
   file = File.open(File.join(Rails.root,'app','assets','images','pug1.jpeg'))
@@ -531,7 +565,7 @@ junya.photo.attach(io: file, filename: "junya.jpg", content_type: 'image/jpg')
 junya.save!
 1.times do
   pet = Pet.create!(
-    name: 'Pepper',
+    name: 'Esperanza',
     user: junya,
     gender: "Female",
     age: 10,

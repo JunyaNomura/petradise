@@ -70,12 +70,12 @@
                 <% if pet.ratings.any? %>
                   <div class="first-reviews">
                     <% pet.ratings.first(5).each do |rating| %>
-                      <!-- <div class="first-reviews-rating"> -->
                       <p class="first-reviews-p"><%= rating.comments %></p>
-                      <p><% (pet.rating).times do %>
+                      <p>
+                        <% (rating.stars).times do %>
                           <i class="fas fa-bone"></i>
                         <% end %>
-                        <% (5 - pet.rating).times do %>
+                        <% (5 - rating.stars).times do %>
                           <i class="fas fa-bone boni"></i>
                         <% end %>
                       </p>
@@ -88,10 +88,10 @@
                   <div class="remaining-reviews hidden">
                     <% pet.ratings.last(pet.ratings.count-5).each do |rating| %>
                       <p class="remaining-reviwes-p"><%= rating.comments %></p>
-                      <p><% (pet.rating).times do %>
+                      <p><% (rating.stars).times do %>
                           <i class="fas fa-bone"></i>
                         <% end %>
-                        <% (5 - pet.rating).times do %>
+                        <% (5 - rating.stars).times do %>
                           <i class="fas fa-bone boni"></i>
                         <% end %>
                       </p>
