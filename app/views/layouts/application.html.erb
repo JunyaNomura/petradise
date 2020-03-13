@@ -25,7 +25,7 @@
 
     <%= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
-  <body class="<%= 'non-scroll' if params[:action] == 'index' && params[:controller] == 'pets' ||  params[:action] == 'my_page' && params[:controller] == 'users'%>">
+  <body class="<%= 'non-scroll' if params[:action] == 'index' && params[:controller] == 'pets'%>">
     <%#= render 'shared/navbar' %>
     <% unless action_name == 'home' %>
       <%= render 'shared/navbarv2' %>
