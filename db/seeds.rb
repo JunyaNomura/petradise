@@ -184,7 +184,7 @@ yann.photo.attach(io: file, filename: "yann.jpeg", content_type: 'image/jpeg')
 yann.save!
 1.times do
   pet = Pet.create!(
-    name: 'Charlie',
+    name: 'Max',
     user: yann,
     gender: "Male",
     age: 8,
@@ -276,7 +276,7 @@ hiro.photo.attach(io: file, filename: "hiro.jpg", content_type: 'image/jpg')
 hiro.save!
 1.times do
   pet = Pet.create!(
-    name: 'Max',
+    name: 'Charlie',
     user: hiro,
     gender: "Male",
     age: 6,
