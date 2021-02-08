@@ -21,7 +21,7 @@ gem 'ngrok'
 gem 'cloudinary', '~> 1.12.0'
 gem 'has_friendship'
 
-gem 'carrierwave', '~> 2.0'
+gem 'carrierwave', '~> 2.1'
 gem 'jquery-rails'
 gem 'swiper-rails'
 gem 'redis'
